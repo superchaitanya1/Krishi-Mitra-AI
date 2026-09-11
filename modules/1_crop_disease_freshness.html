@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Health & Freshness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        #module-map { z-index: 0; }
+        .farm-icon { background: white; border: 2px solid #064e3b; border-radius: 50%; width: 14px !important; height: 14px !important; margin-left: -7px; margin-top: -7px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+<!-- Full Width Header matching Teammate Dashboard -->
+<header class="bg-[#064e3b] shadow-md sticky top-0 z-10 text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3 w-full md:w-auto">
+            <div class="bg-white p-2 rounded-xl text-2xl flex items-center justify-center">
+                <svg class="w-6 h-6 text-[#064e3b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+            </div>
+            <div>
+                <h1 class="text-xl font-extrabold text-white">Crop Health & Freshness</h1>
+                <p class="text-[10px] font-semibold text-emerald-200 uppercase tracking-wider">AI Diagnostics Module</p>
+            </div>
+        </div>
+        <div class="flex flex-wrap items-center bg-black/20 rounded-xl p-2 px-4 gap-4 shadow-sm border border-white/10 w-full md:w-auto justify-center">
+            <div class="flex items-center gap-2 text-xs font-bold whitespace-nowrap">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span id="location-text">Detecting Precise Location...</span>
+            </div>
+            <div class="hidden sm:block w-px h-6 bg-white/20"></div>
+            <div class="flex items-center gap-2 text-xs font-bold whitespace-nowrap">
+                <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                <span id="weather-text">Loading Weather...</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="flex-1 w-full max-w-7xl mx-auto px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+    
+    <div class="w-full lg:w-5/12 space-y-6">
+        <div class="flex bg-slate-200 p-1 rounded-xl">
+            <button id="tab-ai-btn" onclick="switchMode('ai')" class="flex-1 bg-white text-[#064e3b] font-bold py-2 rounded-lg shadow-sm text-sm flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                AI Vision Scan
+            </button>
+            <button id="tab-manual-btn" onclick="switchMode('manual')" class="flex-1 text-slate-500 font-bold py-2 rounded-lg text-sm hover:text-slate-700 flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                Manual Entry
+            </button>
+        </div>
+
+        <div id="ai-mode" class="space-y-4">
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+                <label class="block text-sm font-bold text-slate-700 mb-2">Select Target Crop</label>
+                <select id="crop-select-ai" class="w-full bg-slate-50 border border-slate-300 font-semibold rounded-xl px-4 py-3 outline-none focus:border-[#064e3b]">
+                    <option value="Auto">⚡ Auto-Detect Crop (Any Crop / Leaf)</option>
+                    <option value="Soybean">Soybean</option>
+                    <option value="Tomato">Tomato</option>
+                    <option value="Potato">Potato</option>
+                    <option value="Cotton">Cotton</option>
+                    <option value="Wheat">Wheat</option>
+                    <option value="Rice">Rice (Paddy)</option>
+                    <option value="Onion">Onion & Garlic</option>
+                    <option value="Chilli">Chilli & Pepper</option>
+                    <option value="Corn">Corn (Maize)</option>
+                    <option value="Sugarcane">Sugarcane</option>
+                    <option value="Grape">Grape</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Banana">Banana</option>
+                    <option value="Mango">Mango</option>
+                    <option value="Groundnut">Groundnut (Peanut)</option>
+                </select>
+            </div>
+            
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+                <label class="block text-sm font-bold text-slate-700 mb-2">Upload Crop Image</label>
+                <div id="drop-zone" class="border-2 border-dashed border-slate-300 rounded-2xl bg-slate-50 p-6 text-center hover:bg-slate-100 cursor-pointer" onclick="document.getElementById('image-upload').click()">
+                    <svg class="w-10 h-10 mx-auto text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <p class="text-sm font-semibold text-[#064e3b]">Click to upload leaf photo</p>
+                    <input type="file" id="image-upload" accept="image/*" class="hidden" onchange="handleFileSelect(event)">
+                </div>
+                <div id="image-preview-container" class="hidden mt-4 relative rounded-xl overflow-hidden border border-slate-200">
+                    <img id="image-preview" class="w-full h-40 object-cover" src="" alt="Preview">
+                    <button onclick="clearImage(event)" class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 w-6 h-6 flex items-center justify-center text-xs">✕</button>
+                </div>
+            </div>
+            <button onclick="analyzeImage()" class="w-full bg-[#064e3b] hover:bg-[#134e4a] text-white font-extrabold text-lg py-4 rounded-2xl shadow-lg transition-transform active:scale-[0.98]">
+                Run AI Analysis
+            </button>
+        </div>
+
+        <div id="manual-mode" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Select Crop</label>
+                <select id="crop-select-manual" class="w-full bg-slate-50 border border-slate-300 font-semibold rounded-xl px-4 py-3 outline-none focus:border-[#064e3b]">
+                    <option value="Tomato">Tomato</option>
+                    <option value="Onion">Onion</option>
+                    <option value="Wheat">Wheat</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Visual Condition</label>
+                <select id="condition-select" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 outline-none font-semibold focus:border-[#064e3b]">
+                    <option value="fresh">Fresh & Firm (Grade A)</option>
+                    <option value="good">Good (Slight Marks)</option>
+                    <option value="fair">Fair (Needs Urgent Sale)</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Harvest Date</label>
+                <input type="date" id="harvest-date" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 outline-none focus:border-[#064e3b]">
+            </div>
+            <button onclick="calculateManual()" class="w-full bg-[#064e3b] hover:bg-[#134e4a] text-white font-bold py-3 rounded-xl shadow-md transition-transform active:scale-[0.98]">Calculate Safe Window</button>
+        </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="w-full lg:w-7/12 flex flex-col">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 h-full flex flex-col">
+            <h2 class="text-2xl font-extrabold text-slate-900 mb-6">Diagnostics & Treatment</h2>
+
+            <div id="loading-state" class="hidden flex-1 flex flex-col items-center justify-center text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#064e3b] mb-4"></div>
+                <p class="text-slate-500 font-bold">Analyzing leaf pathology through Zero-Shot Neural Vision & Pixel Diagnostics...</p>
+            </div>
+
+            <div id="results-state" class="hidden flex-1 flex flex-col space-y-6">
+                <div id="mismatch-alert" class="hidden bg-red-50 border-l-4 border-red-500 p-4 text-red-800 font-bold text-sm"></div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                        <span class="text-xs font-bold text-slate-500 uppercase">Diagnosed Crop</span>
+                        <p id="res-crop" class="text-xl font-extrabold text-[#064e3b] mt-2 capitalize"></p>
+                        <p id="res-disease" class="text-sm font-semibold text-slate-600 mt-1"></p>
+                    </div>
+                    <div class="bg-rose-50 rounded-2xl p-6 border border-rose-100">
+                        <span class="text-xs font-bold text-rose-500 uppercase">Est. Spoilage Impact</span>
+                        <p id="res-spoilage" class="text-3xl font-extrabold text-rose-600 mt-2"></p>
+                        <p id="res-metrics" class="text-xs font-semibold text-slate-500 mt-1"></p>
+                    </div>
+                </div>
+
+                <div class="bg-[#f0fdf4] rounded-2xl p-6 border border-[#bbf7d0]">
+                    <h4 class="font-bold text-[#166534] flex items-center gap-2 mb-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        ICAR Verified Treatment Plan
+                    </h4>
+                    <p id="res-treatment" class="text-sm text-[#15803d] font-semibold leading-relaxed"></p>
+                </div>
+            </div>
+            
+            <div id="empty-state" class="flex-1 flex items-center justify-center text-slate-400 text-sm font-semibold border-2 border-dashed border-slate-100 rounded-xl">
+                Awaiting analysis...
+            </div>
+        </div>
+    </div>
+    <script>
+        let base64Image = null;
+        function switchMode(mode) {
+            document.getElementById('ai-mode').classList.toggle('hidden', mode !== 'ai');
+            document.getElementById('manual-mode').classList.toggle('hidden', mode !== 'manual');
+            document.getElementById('tab-ai-btn').className = mode === 'ai' ? 'flex-1 bg-white text-[#064e3b] font-bold py-2 rounded-lg shadow-sm text-sm flex items-center justify-center gap-2' : 'flex-1 text-slate-500 font-bold py-2 rounded-lg text-sm hover:text-slate-700 flex items-center justify-center gap-2';
+            document.getElementById('tab-manual-btn').className = mode === 'manual' ? 'flex-1 bg-white text-[#064e3b] font-bold py-2 rounded-lg shadow-sm text-sm flex items-center justify-center gap-2' : 'flex-1 text-slate-500 font-bold py-2 rounded-lg text-sm hover:text-slate-700 flex items-center justify-center gap-2';
+        }
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = e => {
+                base64Image = e.target.result;
+                document.getElementById('image-preview').src = base64Image;
+                document.getElementById('image-preview-container').classList.remove('hidden');
+                document.getElementById('drop-zone').classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+        function clearImage(e) {
+            e.stopPropagation();
+            base64Image = null;
+            document.getElementById('image-preview-container').classList.add('hidden');
+            document.getElementById('drop-zone').classList.remove('hidden');
+        }
+        async function analyzeImage() {
+            if(!base64Image) { alert('Upload an image first.'); return; }
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('results-state').classList.add('hidden');
+            document.getElementById('loading-state').classList.remove('hidden');
+            
+            let selectedCrop = document.getElementById('crop-select-ai').value;
+
+            try {
+                let r = await fetch('http://localhost:5001/api/ml/analyze', {
+                    method:'POST', headers:{'Content-Type':'application/json'},
+                    body: JSON.stringify({crop: selectedCrop, image: base64Image})
+                });
+                let d = await r.json();
+                document.getElementById('loading-state').classList.add('hidden');
+                
+                if(d.status === 'success') {
+                    document.getElementById('results-state').classList.remove('hidden');
+                    document.getElementById('res-crop').innerText = d.crop;
+                    
+                    if(d.mismatchMsg) {
+                        document.getElementById('mismatch-alert').innerText = d.mismatchMsg;
+                        document.getElementById('mismatch-alert').classList.remove('hidden');
+                        document.getElementById('res-spoilage').innerText = "Blocked";
+                        document.getElementById('res-metrics').innerText = "Diagnosis halted due to crop mismatch";
+                    } else {
+                        document.getElementById('mismatch-alert').classList.add('hidden');
+                        document.getElementById('res-spoilage').innerText = Math.round(d.rotRatio*100) + "% Risk";
+                        if(d.metrics) {
+                            document.getElementById('res-metrics').innerText = `Lesion Area: ${d.metrics.lesionDensity} • Healthy Foliage: ${d.metrics.healthyTissue}`;
+                        } else {
+                            document.getElementById('res-metrics').innerText = "";
+                        }
+                    }
+                    
+                    document.getElementById('res-disease').innerText = "Detection: " + d.disease;
+                    document.getElementById('res-treatment').innerText = d.treatment;
+                    
+                } else alert("Error analyzing image.");
+            } catch(e) { 
+                document.getElementById('loading-state').classList.add('hidden');
+                alert("Backend API is offline. Make sure to run Start_Project.bat"); 
+            }
+        }
+        function calculateManual() {
+            let crop = document.getElementById('crop-select-manual').value;
+            let cond = document.getElementById('condition-select').value;
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('results-state').classList.remove('hidden');
+            document.getElementById('mismatch-alert').classList.add('hidden');
+            
+            document.getElementById('res-crop').innerText = crop;
+            document.getElementById('res-disease').innerText = "Manual Condition: " + cond.toUpperCase();
+            
+            if(cond === 'fresh') {
+                document.getElementById('res-spoilage').innerText = "Low Risk";
+                document.getElementById('res-treatment').innerText = "Crop is healthy. Keep in cool, dry place.";
+            } else if(cond === 'good') {
+                document.getElementById('res-spoilage').innerText = "Moderate Risk";
+                document.getElementById('res-treatment').innerText = "Monitor daily. Prepare for market transport soon.";
+            } else {
+                document.getElementById('res-spoilage').innerText = "High Risk";
+                document.getElementById('res-treatment').innerText = "Urgent: Sell immediately to prevent further degradation. Do not store.";
+            }
+        }
+    </script>
+    
+</main>
+
+<script>
+    let userLat = 18.7516;
+    let userLng = 73.8567;
+    let map = null;
+
+    async function initGlobal() {
+        let cachedLat = localStorage.getItem('krishi_lat');
+        let cachedLng = localStorage.getItem('krishi_lng');
+        
+        if (cachedLat && cachedLng) {
+            userLat = parseFloat(cachedLat);
+            userLng = parseFloat(cachedLng);
+            await fetchLocationAndWeather();
+            if(typeof initModule === 'function') initModule();
+        } else if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                async (pos) => {
+                    userLat = pos.coords.latitude;
+                    userLng = pos.coords.longitude;
+                    localStorage.setItem('krishi_lat', userLat);
+                    localStorage.setItem('krishi_lng', userLng);
+                    await fetchLocationAndWeather();
+                    if(typeof initModule === 'function') initModule();
+                },
+                async () => {
+                    await fetchLocationAndWeather();
+                    if(typeof initModule === 'function') initModule();
+                }
+            );
+        } else {
+            await fetchLocationAndWeather();
+            if(typeof initModule === 'function') initModule();
+        }
+    }
+
+    async function fetchLocationAndWeather() {
+        try {
+            let locRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${userLat}&lon=${userLng}`);
+            let locData = await locRes.json();
+            let preciseName = "";
+            if (locData.address) {
+                preciseName = locData.address.village || locData.address.town || locData.address.city_district || locData.address.county || "";
+                if (preciseName) preciseName += ", ";
+                preciseName += locData.address.state || "";
+            }
+            document.getElementById('location-text').innerText = preciseName || "Unknown Location";
+        } catch(e) { document.getElementById('location-text').innerText = "Offline Mode"; }
+        
+        try {
+            let r = await fetch(`http://localhost:5001/api/weather?lat=${userLat}&lng=${userLng}`);
+            let d = await r.json();
+            if(d.temperature) {
+                document.getElementById('weather-text').innerText = `${d.temperature}°C, ${d.humidity}% Hum`;
+            }
+        } catch(e) { document.getElementById('weather-text').innerText = "Weather Offline"; }
+    }
+    
+    window.onload = initGlobal;
+</script>
+    <script src="../frontend(gov)/js/translation.js"></script>
+</body>
+</html>

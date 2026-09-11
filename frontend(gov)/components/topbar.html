@@ -1,0 +1,303 @@
+<!-- =====================================================
+     KRISHI-MITRA
+     TOPBAR
+     Search | Language | Notifications | Profile
+     ===================================================== -->
+
+<header class="topbar" id="topbar">
+
+    <!-- =================================================
+         LEFT SIDE — MOBILE MENU + SEARCH
+         ================================================= -->
+
+    <div class="topbar-left">
+
+        <!-- Mobile Sidebar Toggle -->
+
+        <button
+            type="button"
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation menu"
+            aria-controls="sidebar"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- Search -->
+
+        <div class="global-search">
+
+            <span class="search-icon">
+                🔍
+            </span>
+
+            <input
+                type="search"
+                id="globalSearch"
+                class="global-search-input"
+                placeholder="Search crops, weather, market prices..."
+                autocomplete="off"
+                aria-label="Search Krishi-Mitra">
+
+
+            <button
+                type="button"
+                class="search-clear"
+                id="searchClear"
+                aria-label="Clear search">
+
+                ×
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RIGHT SIDE
+         ================================================= -->
+
+    <div class="topbar-right">
+
+
+        <!-- =================================================
+             LANGUAGE SELECTOR
+             ================================================= -->
+
+        <div
+            class="language-selector"
+            data-language-selector>
+
+            <button
+                type="button"
+                class="language-button"
+                id="languageButton"
+                aria-haspopup="listbox"
+                aria-expanded="false">
+
+                <span class="language-icon">
+                    🌐
+                </span>
+
+                <span
+                    class="selected-language"
+                    id="selectedLanguage">
+
+                    English
+
+                </span>
+
+                <span class="language-arrow">
+                    ▾
+                </span>
+
+            </button>
+
+
+            <div
+                class="language-dropdown"
+                id="languageDropdown"
+                role="listbox"
+                aria-label="Select language">
+
+                <button
+                    type="button"
+                    class="language-option active"
+                    data-language="en"
+                    role="option"
+                    aria-selected="true">
+
+                    <span>
+                        English
+                    </span>
+
+                    <span class="language-native">
+                        English
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="language-option"
+                    data-language="hi"
+                    role="option"
+                    aria-selected="false">
+
+                    <span>
+                        हिन्दी
+                    </span>
+
+                    <span class="language-native">
+                        Hindi
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="language-option"
+                    data-language="mr"
+                    role="option"
+                    aria-selected="false">
+
+                    <span>
+                        मराठी
+                    </span>
+
+                    <span class="language-native">
+                        Marathi
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NOTIFICATIONS
+             ================================================= -->
+
+        <button
+            type="button"
+            class="notification-button"
+            id="notificationButton"
+            data-nav="notifications"
+            data-requires-login="true"
+            aria-label="Notifications">
+
+            <span class="notification-icon">
+                🔔
+            </span>
+
+            <span
+                class="notification-dot"
+                data-notification-dot>
+            </span>
+
+            <span
+                class="notification-number"
+                data-notification-count>
+                0
+            </span>
+
+        </button>
+
+
+        <!-- =================================================
+             PROFILE
+             ================================================= -->
+
+        <button
+            type="button"
+            class="topbar-profile"
+            data-open-profile
+            aria-label="Open farmer profile">
+
+            <div class="topbar-profile-avatar">
+
+                <img
+                    src=""
+                    alt="Farmer profile"
+                    data-profile-avatar
+                    class="topbar-profile-image">
+
+                <span
+                    class="topbar-profile-placeholder">
+
+                    👨‍🌾
+
+                </span>
+
+            </div>
+
+
+            <div class="topbar-profile-info">
+
+                <span
+                    class="topbar-profile-name"
+                    data-profile-name>
+
+                    Create Profile
+
+                </span>
+
+                <span class="topbar-profile-role">
+
+                    Farmer
+
+                </span>
+
+            </div>
+
+
+            <span class="topbar-profile-arrow">
+                ▾
+            </span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     SEARCH RESULTS
+     ===================================================== -->
+
+<div
+    class="global-search-results"
+    id="globalSearchResults"
+    aria-hidden="true">
+
+    <div class="search-results-header">
+
+        <span>
+            Search Results
+        </span>
+
+        <button
+            type="button"
+            id="closeSearchResults"
+            aria-label="Close search results">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="search-results-content"
+        id="searchResultsContent">
+
+        <div class="search-empty-state">
+
+            <span class="search-empty-icon">
+                🔎
+            </span>
+
+            <p>
+                Search for crops, weather,
+                market prices or farming tips.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>

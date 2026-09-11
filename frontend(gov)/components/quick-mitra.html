@@ -1,0 +1,275 @@
+<!-- =====================================================
+     KRISHI-MITRA
+     QUICK MITRA
+     Temporary Dashboard Chat
+     ===================================================== -->
+
+<section
+    class="quick-mitra"
+    id="quickMitra"
+    aria-labelledby="quickMitraTitle">
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <div class="quick-mitra-header">
+
+        <div class="quick-mitra-heading">
+
+            <div class="quick-mitra-avatar">
+                🤖
+            </div>
+
+            <div>
+
+                <h2 id="quickMitraTitle">
+                    Ask Mitra
+                </h2>
+
+                <p>
+                    Quick help for your farming doubts
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Temporary indicator -->
+
+        <div class="temporary-chat-badge">
+
+            <span class="temporary-dot"></span>
+
+            Temporary Chat
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         INFORMATION NOTE
+         ================================================= -->
+
+    <div class="quick-mitra-info">
+
+        <span class="info-icon">
+            ℹ️
+        </span>
+
+        <p>
+            This is a temporary chat for quick questions.
+            Your conversation will not be saved.
+            For saved conversations and personalized
+            farming assistance, use
+            <strong>Mitra AI</strong> after signing in.
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         CHAT AREA
+         ================================================= -->
+
+    <div
+        class="quick-mitra-chat"
+        id="quickMitraChat"
+        aria-live="polite">
+
+
+        <!-- Welcome Message -->
+
+        <div class="quick-mitra-message mitra-message">
+
+            <div class="message-avatar">
+                🤖
+            </div>
+
+            <div class="message-content">
+
+                <div class="message-sender">
+                    Mitra
+                </div>
+
+                <div class="message-bubble">
+
+                    <p>
+                        Namaste! 👋
+                    </p>
+
+                    <p>
+                        I'm Mitra, your farming companion.
+                        Ask me a quick question about crops,
+                        diseases, farming practices or anything
+                        related to agriculture.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Suggested Questions -->
+
+        <div
+            class="quick-mitra-suggestions"
+            id="quickMitraSuggestions">
+
+            <p class="suggestions-title">
+                Try asking:
+            </p>
+
+
+            <div class="suggestion-list">
+
+                <button
+                    type="button"
+                    class="suggestion-button"
+                    data-quick-question="How can I identify common crop diseases?">
+
+                    🌿
+                    <span>
+                        How can I identify crop diseases?
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="suggestion-button"
+                    data-quick-question="What should I do if my crop leaves are turning yellow?">
+
+                    🍃
+                    <span>
+                        Why are my crop leaves turning yellow?
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="suggestion-button"
+                    data-quick-question="What are some general tips for improving crop production?">
+
+                    🌱
+                    <span>
+                        Tips to improve crop production
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Typing Indicator -->
+
+        <div
+            class="quick-mitra-typing"
+            id="quickMitraTyping"
+            aria-hidden="true">
+
+            <div class="message-avatar">
+                🤖
+            </div>
+
+            <div class="typing-bubble">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CHAT INPUT
+         ================================================= -->
+
+    <form
+        class="quick-mitra-input-area"
+        id="quickMitraForm"
+        data-quick-mitra-form>
+
+
+        <div class="quick-mitra-input-wrapper">
+
+            <textarea
+                id="quickMitraInput"
+                name="message"
+                class="quick-mitra-input"
+                placeholder="Ask Mitra a quick question..."
+                rows="1"
+                maxlength="500"
+                autocomplete="off"
+                aria-label="Ask Mitra a question"></textarea>
+
+
+            <!-- Character Counter -->
+
+            <span
+                class="quick-mitra-character-count"
+                id="quickMitraCharacterCount">
+
+                0/500
+
+            </span>
+
+        </div>
+
+
+        <!-- Send Button -->
+
+        <button
+            type="submit"
+            class="quick-mitra-send"
+            id="quickMitraSend"
+            aria-label="Send message">
+
+            <span>
+                ➤
+            </span>
+
+        </button>
+
+    </form>
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <div class="quick-mitra-footer">
+
+        <span>
+            🌱
+            General farming assistance
+        </span>
+
+        <button
+            type="button"
+            class="open-full-mitra"
+            data-nav="mitra"
+            data-requires-login="true">
+
+            Open Mitra AI
+            →
+
+        </button>
+
+    </div>
+
+</section>

@@ -1,0 +1,823 @@
+/* =========================================================
+   KRISHI-MITRA
+   CHATBOT.CSS
+   Mitra AI — Full-Featured Agricultural AI Assistant Styles
+   ========================================================= */
+
+/* =========================================================
+   0. STRICT DASHBOARD-ONLY VISIBILITY
+   Mitra AI is strictly hidden on landing page, login page, and unauthenticated views
+   ========================================================= */
+body.landing-active #mitra-floating-fab,
+body.landing-active .mitra-floating-fab,
+body.landing-active #mitra-floating-modal,
+body.landing-active .mitra-floating-modal,
+body.landing-active [data-module-section="mitra"],
+body.landing-active .mitra-chat-container,
+#landing-page:not([hidden]) ~ * #mitra-floating-fab,
+#landing-page:not([hidden]) ~ #mitra-floating-fab {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* =========================================================
+   1. MODULE CONTAINER & WRAPPER
+   ========================================================= */
+.mitra-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: mitraPageFadeIn 0.35s ease-out;
+}
+
+@keyframes mitraPageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mitra-chat-container {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #dce4dc;
+    box-shadow: 0 10px 32px rgba(6, 53, 29, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 210px);
+    min-height: 560px;
+    max-height: 820px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* =========================================================
+   2. CHAT HEADER
+   ========================================================= */
+.mitra-chat-header {
+    background: linear-gradient(135deg, #06391f 0%, #0b522b 60%, #17663a 100%);
+    color: #ffffff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(6, 57, 31, 0.15);
+    z-index: 2;
+}
+
+.mitra-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.mitra-avatar, .bot-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #a3e635;
+    box-shadow: 0 0 12px rgba(163, 230, 53, 0.3);
+    flex-shrink: 0;
+}
+
+.mitra-chat-header strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.mitra-chat-header span {
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.78);
+    margin-top: 2px;
+}
+
+.mitra-online {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 7px;
+    background: rgba(163, 230, 53, 0.16);
+    border: 1px solid rgba(163, 230, 53, 0.3);
+    color: #bbf7d0 !important;
+    font-size: 11px !important;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.mitra-online span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+    animation: mitraPulseDot 1.8s infinite;
+}
+
+@keyframes mitraPulseDot {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    50% { transform: scale(1.25); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.mitra-header-right-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mitra-clear-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mitra-clear-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   3. MESSAGES SCROLL AREA
+   ========================================================= */
+.mitra-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 28px;
+    background: #f9fbf8;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scroll-behavior: smooth;
+}
+
+.mitra-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mitra-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mitra-messages::-webkit-scrollbar-thumb {
+    background: #c7d2c4;
+    border-radius: 10px;
+}
+
+.mitra-messages::-webkit-scrollbar-thumb:hover {
+    background: #9bb097;
+}
+
+/* =========================================================
+   4. MESSAGE ROWS & BUBBLES
+   ========================================================= */
+.mitra-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 86%;
+    animation: mitraMsgFadeIn 0.28s ease-out;
+}
+
+@keyframes mitraMsgFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mitra-message.bot {
+    align-self: flex-start;
+}
+
+.mitra-message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.mitra-message-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.mitra-message-avatar.bot-avatar {
+    background: linear-gradient(135deg, #0b522b, #17663a);
+    color: #a3e635;
+    border: 1px solid rgba(163, 230, 53, 0.35);
+    box-shadow: 0 2px 8px rgba(11, 82, 43, 0.25);
+}
+
+.mitra-message-avatar.user-avatar {
+    background: linear-gradient(135deg, #be5504, #913a00);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(190, 85, 4, 0.25);
+}
+
+.mitra-bubble {
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.65;
+    word-break: break-word;
+    position: relative;
+}
+
+/* User Bubble */
+.mitra-bubble.user-bubble {
+    background: linear-gradient(135deg, #17663a 0%, #0b522b 100%);
+    color: #ffffff;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 14px rgba(11, 82, 43, 0.2);
+    font-weight: 500;
+}
+
+/* Bot Bubble */
+.mitra-bubble.bot-bubble {
+    background: #ffffff;
+    color: #1f2937;
+    border: 1px solid #e2e8df;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Formatting within bot bubble */
+.mitra-content-body p {
+    margin-bottom: 10px;
+}
+
+.mitra-content-body p:last-child {
+    margin-bottom: 0;
+}
+
+.mitra-content-body strong {
+    color: #0b522b;
+    font-weight: 700;
+}
+
+.mitra-content-body em {
+    color: #374151;
+    font-style: italic;
+}
+
+.mitra-content-body .mitra-h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #06391f;
+    margin: 14px 0 8px 0;
+    border-bottom: 1px solid #eef3eb;
+    padding-bottom: 4px;
+}
+
+.mitra-content-body .mitra-h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0b522b;
+    margin: 12px 0 6px 0;
+}
+
+.mitra-content-body .mitra-h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #17663a;
+    margin: 10px 0 4px 0;
+}
+
+.mitra-content-body .mitra-list-item-num,
+.mitra-content-body .mitra-list-item-bullet {
+    list-style: none;
+    margin-bottom: 6px;
+    padding-left: 4px;
+}
+
+.mitra-content-body .mitra-list-item-bullet::before {
+    content: "•";
+    color: #17663a;
+    font-weight: bold;
+    display: inline-block;
+    width: 14px;
+    margin-left: -2px;
+}
+
+.mitra-content-body .inline-code {
+    background: #f0f7f2;
+    color: #0b522b;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+    font-size: 13px;
+    border: 1px solid #d1e7d6;
+}
+
+/* =========================================================
+   5. MESSAGE ACTIONS (LISTEN / COPY)
+   ========================================================= */
+.mitra-message-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #f0f3ee;
+}
+
+.mitra-time-tag {
+    font-size: 11px;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.mitra-action-btn {
+    background: #f8faf7;
+    border: 1px solid #dce4dc;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mitra-action-btn:hover {
+    background: #eef5ee;
+    color: #0b522b;
+    border-color: #b8d4bb;
+    transform: translateY(-1px);
+}
+
+.mitra-action-btn.listen-btn.speaking {
+    background: #ecfdf5;
+    color: #059669;
+    border-color: #6ee7b7;
+    animation: mitraAudioWave 1.2s infinite ease-in-out;
+}
+
+@keyframes mitraAudioWave {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+/* =========================================================
+   6. TYPING INDICATOR
+   ========================================================= */
+.mitra-typing-row {
+    align-items: center;
+}
+
+.mitra-typing-row .typing-bubble {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+}
+
+.mitra-typing-dots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.mitra-typing-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #17663a;
+    display: inline-block;
+    animation: mitraDotBounce 1.4s infinite ease-in-out both;
+}
+
+.mitra-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.mitra-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+.mitra-typing-dots span:nth-child(3) { animation-delay: 0s; }
+
+@keyframes mitraDotBounce {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    40% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.typing-label {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* =========================================================
+   7. INTERACTIVE SUGGESTION CHIPS
+   ========================================================= */
+.mitra-suggestion-chips {
+    padding: 10px 24px;
+    background: #ffffff;
+    border-top: 1px solid #edf1eb;
+    flex-shrink: 0;
+}
+
+.chips-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #c7d2c4 transparent;
+}
+
+.chips-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.chips-scroll::-webkit-scrollbar-thumb {
+    background: #d4ded2;
+    border-radius: 10px;
+}
+
+.mitra-chip {
+    white-space: nowrap;
+    background: #f4f8f4;
+    border: 1px solid #cfe2d3;
+    color: #14532d;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.mitra-chip:hover {
+    background: #17663a;
+    color: #ffffff;
+    border-color: #17663a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(23, 102, 58, 0.2);
+}
+
+/* =========================================================
+   8. INPUT BAR & CONTROLS
+   ========================================================= */
+.mitra-input-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8df;
+    flex-shrink: 0;
+}
+
+.mitra-voice-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #f0f7f2;
+    border: 1.5px solid #cfe2d3;
+    color: #17663a;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.mitra-voice-btn:hover {
+    background: #dcfce7;
+    color: #15803d;
+    transform: scale(1.06);
+    border-color: #86efac;
+}
+
+.mitra-voice-btn.listening {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    border-color: #b91c1c !important;
+    animation: mitraMicPulse 1.1s infinite;
+}
+
+@keyframes mitraMicPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+    70% { transform: scale(1.08); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+#mitra-chat-input,
+#modal-mitra-input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1.5px solid #d2d8ce;
+    border-radius: 26px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+    background: #fafbf9;
+    color: #1f2937;
+    font-family: inherit;
+}
+
+#mitra-chat-input:focus,
+#modal-mitra-input:focus {
+    border-color: #17663a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(23, 102, 58, 0.12);
+}
+
+.mitra-send-btn,
+.mitra-input-area button[type="submit"] {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #17663a 0%, #0b522b 100%);
+    color: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    box-shadow: 0 3px 12px rgba(11, 82, 43, 0.28);
+}
+
+.mitra-send-btn:hover,
+.mitra-input-area button[type="submit"]:hover {
+    transform: scale(1.06);
+    box-shadow: 0 5px 16px rgba(11, 82, 43, 0.4);
+}
+
+/* =========================================================
+   9. FLOATING LAUNCHER (FAB)
+   ========================================================= */
+.mitra-floating-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9990;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #0b522b 0%, #17663a 100%);
+    color: #ffffff;
+    padding: 10px 18px 10px 12px;
+    border-radius: 35px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(6, 53, 29, 0.38), 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: inherit;
+}
+
+.mitra-floating-fab:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 36px rgba(6, 53, 29, 0.48), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mitra-floating-fab:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.mitra-fab-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #a3e635;
+}
+
+.mitra-fab-text {
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+}
+
+.mitra-fab-pulse {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 8px #22c55e;
+    animation: fabPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes fabPing {
+    0% { transform: scale(0.9); opacity: 0.9; }
+    50% { transform: scale(1.4); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.9; }
+}
+
+/* =========================================================
+   10. FLOATING CHAT MODAL (BUYER / FULL POPUP)
+   ========================================================= */
+.mitra-floating-modal {
+    position: fixed;
+    bottom: 92px;
+    right: 28px;
+    width: 440px;
+    max-width: calc(100vw - 32px);
+    height: 600px;
+    max-height: calc(100vh - 120px);
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 24px 65px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    z-index: 9995;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: mitraModalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mitra-floating-modal.active {
+    display: flex;
+}
+
+@keyframes mitraModalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.mitra-modal-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.mitra-modal-header {
+    background: linear-gradient(135deg, #06391f 0%, #0b522b 100%);
+    color: #ffffff;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.modal-robot-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #a3e635;
+}
+
+.modal-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.modal-sub {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.75);
+    display: block;
+}
+
+.modal-tool-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.modal-tool-btn:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: scale(1.08);
+}
+
+.modal-messages-area {
+    padding: 18px 20px !important;
+    gap: 16px !important;
+}
+
+.modal-input-bar {
+    padding: 10px 16px !important;
+}
+
+/* =========================================================
+   11. RESPONSIVE BREAKPOINTS
+   ========================================================= */
+@media (max-width: 768px) {
+    .mitra-chat-container {
+        height: calc(100vh - 160px);
+        border-radius: 14px;
+        min-height: 480px;
+    }
+
+    .mitra-messages {
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .mitra-message {
+        max-width: 95%;
+    }
+
+    .mitra-input-area {
+        padding: 10px 14px;
+    }
+
+    .mitra-floating-modal {
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .mitra-floating-fab {
+        bottom: 20px;
+        right: 18px;
+        padding: 10px 14px;
+    }
+
+    .mitra-fab-text {
+        display: none;
+    }
+}

@@ -1,0 +1,2274 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Krishi-Mitra - Smart Farming Assistant for Farmers">
+
+    <meta name="theme-color" content="#174c32">
+
+    <title>Krishi-Mitra | Smart Farming Assistant</title>
+    <link rel="icon" type="image/png" href="assets/fevicon/krishiMitra fevicon.jpeg">
+
+    <!-- =========================================================
+         GOOGLE FONTS
+         ========================================================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =========================================================
+         FONT AWESOME
+         ========================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- =========================================================
+         KRISHI-MITRA CSS
+         ========================================================= -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/modules.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+
+<body class="landing-active">
+
+    <!-- =========================================================
+         APPLICATION
+         ========================================================= -->
+
+    <div class="app-wrapper" id="app">
+
+
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <!-- LOGO -->
+
+            
+
+            <!-- NAVIGATION -->
+
+            <nav
+                class="sidebar-navigation"
+                aria-label="Main Navigation">
+
+
+                <!-- =================================================
+                     MAIN
+                     ================================================= -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MAIN
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="nav-item active"
+                        data-module="dashboard">
+
+                        <span class="nav-icon">
+                            <i class="fa-solid fa-house"></i>
+                        </span>
+
+                        <span class="nav-label">
+                            Dashboard
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-module="my-farm">
+
+                        <span class="nav-icon">
+                            <i class="fa-solid fa-wheat-awn"></i>
+                        </span>
+
+                        <span class="nav-label">
+                            My Farm
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-module="crop-doctor">
+
+                        <span class="nav-icon">
+                            <i class="fa-solid fa-stethoscope"></i>
+                        </span>
+
+                        <span class="nav-label">
+                            AI Crop Doctor
+                        </span>
+
+                        
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-module="mitra-ai">
+
+                        <span class="nav-icon">
+                            <i class="fa-solid fa-robot"></i>
+                        </span>
+
+                        <span class="nav-label">
+                            Mitra AI
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =================================================
+     FARM INTELLIGENCE
+     ================================================= -->
+
+<div class="nav-section">
+
+    <p class="nav-section-title">
+        FARM INTELLIGENCE
+    </p>
+
+
+    <!-- WEATHER -->
+
+    <button
+        type="button"
+        class="nav-item"
+        data-module="weather"
+        data-requires-login="true">
+
+        <span class="nav-icon">
+            <i class="fa-solid fa-cloud-sun"></i>
+        </span>
+
+        <span class="nav-label">
+            Weather
+        </span>
+
+    </button>
+
+
+    <!-- MARKET PRICES -->
+
+    <button
+        type="button"
+        class="nav-item"
+        data-module="market"
+        data-requires-login="true">
+
+        <span class="nav-icon">
+            <i class="fa-solid fa-chart-line"></i>
+        </span>
+
+        <span class="nav-label">
+            Market Prices
+        </span>
+
+    </button>
+
+
+    <!-- TRANSPORTATION -->
+
+    <button
+        type="button"
+        class="nav-item"
+        data-module="transportation"
+        data-requires-login="true">
+
+        <span class="nav-icon">
+            <i class="fa-solid fa-truck"></i>
+        </span>
+
+        <span class="nav-label">
+            Transportation
+        </span>
+
+    </button>
+
+
+    <!-- COLD STORAGE -->
+
+    <button
+        type="button"
+        class="nav-item"
+        data-module="cold-storage"
+        data-requires-login="true">
+
+        <span class="nav-icon">
+            <i class="fa-solid fa-snowflake"></i>
+        </span>
+
+        <span class="nav-label">
+            Cold Storage
+        </span>
+
+    </button>
+
+    <!-- FPO BULK SELLING -->
+
+<button
+    type="button"
+    class="nav-item"
+    data-module="fpo-bulk-selling"
+    data-requires-login="true">
+
+    <span class="nav-icon">
+        <i class="fa-solid fa-people-group"></i>
+    </span>
+
+    <span class="nav-label">
+        FPO Bulk Selling
+    </span>
+
+</button>
+
+</div>
+
+
+                <!-- =================================================
+                     RESOURCES
+                     ================================================= -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        RESOURCES
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="nav-item"
+                        data-module="schemes">
+
+                        <span class="nav-icon">
+                            <i class="fa-solid fa-landmark"></i>
+                        </span>
+
+                        <span class="nav-label">
+                            Government
+                            <span class="nav-sub-label">Schemes</span>
+                        </span>
+                    </button>
+
+
+                </div>
+
+            </nav>
+
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+
+                <div class="sidebar-footer">
+
+                    <div class="footer-leaf">
+
+                        <i class="fa-solid fa-seedling"></i>
+
+                    </div>
+
+                    <div class="footer-text">
+
+                        <strong>
+                            Grow Smarter.
+                        </strong>
+
+                        <span>
+                            Farm Better.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =====================================================
+             MAIN AREA
+             ===================================================== -->
+
+        <main
+            class="main-area"
+            id="main-area">
+
+    <!-- =================================================
+         LANDING PAGE
+         ================================================= -->
+
+    <section class="landing-page" id="landing-page">
+
+        <!-- =================================================
+     LANDING PAGE LANGUAGE SWITCHER
+     ================================================= -->
+
+<div class="landing-language-switcher">
+
+    <button
+        type="button"
+        class="landing-language-option active"
+        data-language="en">
+        English
+    </button>
+
+    <span class="landing-language-divider">|</span>
+
+    <button
+        type="button"
+        class="landing-language-option"
+        data-language="hi">
+        हिन्दी
+    </button>
+
+    <span class="landing-language-divider">|</span>
+
+    <button
+        type="button"
+        class="landing-language-option"
+        data-language="mr">
+        मराठी
+    </button>
+
+</div> 
+
+        <div class="landing-hero">
+
+            <!-- Background image -->
+            <div class="landing-hero-background"></div>
+
+            <!-- Dark overlay -->
+            <div class="landing-hero-overlay"></div>
+
+            <!-- Hero content -->
+            <div class="landing-hero-content">
+
+                <span class="landing-eyebrow">
+                    SMART AGRICULTURE PLATFORM
+                </span>
+
+                <h1>
+                    Welcome to,
+                    <span>Krishi-Mitra</span>
+                </h1>
+
+                <p class="landing-hero-title">
+                    Smart Farming.
+                    <br>
+                    Smarter Future.
+                </p>
+
+                
+                <div class="landing-role-actions">
+
+                    <button
+                        type="button"
+                        class="landing-role-button farmer-button"
+                        data-role="farmer">
+
+                        <span class="landing-button-icon">
+                            <i class="fa-solid fa-wheat-awn"></i>
+                        </span>
+
+                        <span class="landing-button-text">
+                            <strong>I'm a Farmer</strong>
+                            <small>Manage your farm smarter</small>
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="landing-role-button buyer-button"
+                        data-role="buyer">
+
+                        <span class="landing-button-icon">
+                            <i class="fa-solid fa-store"></i>
+                        </span>
+
+                        <span class="landing-button-text">
+                            <strong>I'm a Buyer</strong>
+                            <small>Connect with farmers & produce</small>
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="landing-bottom-note">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                <span>
+                    Grow Smarter. Farm Better.
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+            <!-- =================================================
+                 TOPBAR
+                 ================================================= -->
+
+            <header class="topbar" id="topbar">
+
+            <!-- KRISHI-MITRA BRANDING -->
+<div class="app-brand">
+
+    <div class="logo-mark">
+        <img
+            src="assets/logo/krishi-mitra-logo.png"
+            alt="Krishi-Mitra Logo">
+    </div>
+
+    <div class="logo-text">
+
+        <span class="logo-name">
+            Krishi-Mitra
+        </span>
+
+        <span class="logo-tagline">
+            Your Smart Farming Companion
+        </span>
+
+    </div>
+
+</div>
+
+    <!-- MOBILE MENU -->
+    <button
+        type="button"
+        class="mobile-menu-button"
+        id="mobile-menu-button"
+        aria-label="Open navigation"
+        aria-controls="sidebar"
+        aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    
+    <!-- TOPBAR RIGHT -->
+    <div class="topbar-actions">
+
+    <!-- SEARCH -->
+    <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+
+        <input
+            type="search"
+            id="global-search"
+            class="global-search"
+            placeholder="Search crops, diseases, solutions..."
+            autocomplete="off"
+            aria-label="Search Krishi-Mitra">
+
+        <span class="search-shortcut">⌘ K</span>
+    </div>
+
+
+        <!-- LANGUAGE -->
+<div class="language-selector">
+
+    <button
+        type="button"
+        class="language-option-inline active"
+        data-language="en">
+        English
+    </button>
+
+    <span class="language-divider">|</span>
+
+    <button
+        type="button"
+        class="language-option-inline"
+        data-language="hi">
+        हिन्दी
+    </button>
+
+    <span class="language-divider">|</span>
+
+    <button
+        type="button"
+        class="language-option-inline"
+        data-language="mr">
+        मराठी
+    </button>
+
+</div>
+        
+<!-- NOTIFICATIONS -->
+
+<div class="notification-wrapper">
+
+    <button
+        type="button"
+        class="topbar-icon-button notification-button"
+        id="notification-button"
+        aria-label="Notifications"
+        title="Notifications">
+
+        <i class="fa-regular fa-bell" aria-hidden="true"></i>
+
+        <span
+            class="topbar-notification-dot empty"
+            id="notification-count">
+        </span>
+
+    </button>
+
+
+    <div
+        class="notification-panel"
+        id="notification-panel">
+
+        <div class="notification-panel-header">
+
+            <div>
+                <h3>Notifications</h3>
+                <span>Your latest updates</span>
+            </div>
+
+            <button
+                type="button"
+                class="mark-all-notifications">
+                Mark all
+            </button>
+
+        </div>
+
+
+        <div
+            class="notification-list"
+            id="notification-list">
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- PROFILE -->
+        <button
+            type="button"
+            class="profile-button"
+            id="profile-button"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-label="Open profile menu">
+
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </div>
+
+            <div class="profile-summary">
+                <span
+                    class="profile-name"
+                    id="topbar-profile-name">
+                    Guest User
+                </span>
+
+                <span
+                    class="profile-status"
+                    id="topbar-profile-status">
+                    Guest Mode
+                </span>
+            </div>
+
+            <i
+                class="fa-solid fa-chevron-down profile-chevron"
+                aria-hidden="true"></i>
+        </button>
+
+        <!-- PROFILE MENU -->
+        <div
+            class="profile-dropdown"
+            id="profile-dropdown"
+            role="menu"
+            aria-label="Profile menu">
+
+            <div class="profile-menu-header">
+                <div class="profile-avatar large">
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                </div>
+
+                <div class="profile-menu-user">
+                    <strong id="dropdown-profile-name">Guest User</strong>
+                    <span id="dropdown-profile-status">Explore Krishi-Mitra</span>
+                </div>
+            </div>
+
+            <div class="profile-menu-divider"></div>
+
+            <button
+                type="button"
+                class="profile-menu-item"
+                data-action="profile"
+                role="menuitem">
+                <i class="fa-regular fa-user"></i>
+                <span>My Profile</span>
+            </button>
+
+            <button
+                type="button"
+                class="profile-menu-item"
+                data-action="settings"
+                role="menuitem">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </button>
+
+            <div class="profile-menu-divider"></div>
+
+            <button
+                type="button"
+                class="profile-menu-item profile-signin-button dropdown-signin"
+                data-action="signin"
+                role="menuitem">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                <span>Sign In</span>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+
+
+            <!-- =================================================
+                 CONTENT AREA
+                 ================================================= -->
+
+            <section
+                class="content-area"
+                id="content-area"
+                aria-live="polite">
+
+
+<!-- =================================================
+     DASHBOARD MODULE
+     ================================================= -->
+
+<section
+    class="module-section dashboard-module active"
+    data-module-section="dashboard"
+>
+
+    <!-- =================================================
+         FARM WELCOME / HERO SECTION
+         ================================================= -->
+
+    <section class="dashboard-hero">
+
+        <!-- Agricultural Background -->
+        <div class="dashboard-hero-background"></div>
+
+        <!-- Dark/Green Overlay -->
+        <div class="dashboard-hero-overlay"></div>
+
+
+        <!-- Greeting -->
+        <div class="dashboard-hero-content">
+
+            <span class="dashboard-hero-eyebrow">
+                <i class="fa-solid fa-sun"></i>
+                YOUR FARM TODAY
+            </span>
+
+            <h1>
+                Good Morning,
+                <span id="dashboard-farmer-name">
+                    Farmer
+                </span>
+                <span class="greeting-plant">🌱</span>
+            </h1>
+
+            <p>
+                Here's what's happening in your farm today.
+            </p>
+
+            <button
+                type="button"
+                class="hero-button"
+                data-module="my-farm"
+            >
+                View Farm
+
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             MITRA AI ASSISTANT
+             ================================================= -->
+
+        <div class="dashboard-mitra-card">
+
+            <div class="dashboard-mitra-image">
+
+                <img
+                    src="assets/images/mitra-robot.png"
+                    alt="Mitra AI Assistant"
+                    onerror="this.style.display='none';"
+                >
+
+            </div>
+
+
+            <div class="dashboard-mitra-content">
+
+                <div class="dashboard-mitra-header">
+
+                    <div>
+
+                        <span class="dashboard-mitra-label">
+                            <i class="fa-solid fa-leaf"></i>
+                            MITRA AI
+                        </span>
+
+                        <h2>
+                            Mitra AI Assistant
+                        </h2>
+
+                    </div>
+
+                    <span class="mitra-online-status">
+                        <span class="mitra-online-dot"></span>
+                        Online
+                    </span>
+
+                </div>
+
+
+                <p>
+                    Hello! I'm Mitra AI.
+                    How can I help your farm today?
+                </p>
+
+
+                <button
+                    type="button"
+                    class="hero-mitra-button"
+                    data-module="mitra-ai"
+                    data-requires-login="true"
+                >
+                    Chat with Mitra
+
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FOUR FARM SUMMARY CARDS
+         ================================================= -->
+
+    <section class="dashboard-summary-grid">
+
+
+        <!-- =================================================
+             1. CROP HEALTH
+             ================================================= -->
+
+        <article
+            class="summary-card crop-health-card"
+            data-dashboard-card="crop-health"
+            data-module="crop-doctor"
+        >
+
+            <div class="summary-card-top">
+
+                <div class="summary-icon green-icon">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                </div>
+
+                <span class="summary-label">
+                    Crop Health
+                </span>
+
+            </div>
+
+
+            <div class="summary-value-row">
+
+                <strong
+                    class="summary-main-value"
+                    id="dashboard-crop-health"
+                >
+                    Excellent
+                </strong>
+
+                <span
+                    class="summary-percentage"
+                    id="dashboard-health-percent"
+                >
+                    92%
+                </span>
+
+            </div>
+
+
+            <p>
+                Your crops are healthy
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             2. WEATHER
+             ================================================= -->
+
+        <article
+            class="summary-card weather-summary-card"
+            data-dashboard-card="weather"
+            data-module="weather"
+        >
+
+            <div class="summary-card-top">
+
+                <div class="summary-icon blue-icon">
+
+                    <i class="fa-solid fa-cloud-rain"></i>
+
+                </div>
+
+                <span class="summary-label">
+                    Weather
+                </span>
+
+            </div>
+
+
+            <strong
+                class="summary-main-value weather-value"
+                id="dashboard-weather-status"
+            >
+                Rain expected tomorrow
+            </strong>
+
+
+            <div class="weather-mini-row">
+
+                <span>
+                    Min
+                    <strong id="dashboard-temp-min">
+                        22°C
+                    </strong>
+                </span>
+
+                <span>
+                    Max
+                    <strong id="dashboard-temp-max">
+                        31°C
+                    </strong>
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             3. MARKET PRICE
+             ================================================= -->
+
+        <article
+            class="summary-card market-summary-card"
+            data-dashboard-card="market"
+            data-module="market"
+            data-requires-login="true"
+        >
+
+            <div class="summary-card-top">
+
+                <div class="summary-icon gold-icon">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+
+                <span class="summary-label">
+
+                    Market Price
+
+                    (
+                    <span id="dashboard-market-crop">
+                        Tomato
+                    </span>
+                    )
+
+                </span>
+
+            </div>
+
+
+            <div class="market-price-line">
+
+                <strong id="dashboard-market-price">
+                    ₹2,950
+                </strong>
+
+                <span>
+                    / Quintal
+                </span>
+
+            </div>
+
+
+            <p class="positive-change">
+
+                <i class="fa-solid fa-arrow-up"></i>
+
+                <strong id="dashboard-market-change">
+                    8.4%
+                </strong>
+
+                from yesterday
+
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             4. IRRIGATION ADVICE
+             ================================================= -->
+
+        <article
+            class="summary-card irrigation-summary-card"
+            data-dashboard-card="irrigation"
+            data-module="irrigation"
+            data-requires-login="true"
+        >
+
+            <div class="summary-card-top">
+
+                <div class="summary-icon blue-drop-icon">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                </div>
+
+
+                <span class="summary-label">
+                    Irrigation Advice
+                </span>
+
+            </div>
+
+
+            <strong
+                class="summary-main-value"
+                id="dashboard-irrigation"
+            >
+                Irrigate in 2 Days
+            </strong>
+
+
+            <p>
+                Next recommended irrigation
+            </p>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FARM TIPS FOR YOU
+         ================================================= -->
+
+    <section class="farm-tips-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-eyebrow">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    PERSONALIZED GUIDANCE
+                </span>
+
+                <h2>
+                    Farm Tips For You
+                </h2>
+
+                <p>
+                    Simple recommendations to help you
+                    make better farming decisions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="farm-tips-grid">
+
+
+            <!-- TIP 1 -->
+
+            <article class="farm-tip-card">
+
+                <div class="farm-tip-image">
+
+                    <img
+                        src="assets/images/farm-tip-soil.png"
+                        alt="Soil moisture"
+                        onerror="this.style.display='none';"
+                    >
+
+                    <div class="farm-tip-icon green-tip-icon">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="farm-tip-content">
+
+                    <span class="farm-tip-label">
+                        IRRIGATION
+                    </span>
+
+                    <h3>
+                        Check Soil Moisture
+                    </h3>
+
+                    <p>
+                        Check soil moisture before
+                        the next irrigation cycle.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- TIP 2 -->
+
+            <article class="farm-tip-card">
+
+                <div class="farm-tip-image">
+
+                    <img
+                        src="assets/images/farm-tip-weather.png"
+                        alt="Weather monitoring"
+                        onerror="this.style.display='none';"
+                    >
+
+                    <div class="farm-tip-icon blue-tip-icon">
+
+                        <i class="fa-solid fa-cloud-sun"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="farm-tip-content">
+
+                    <span class="farm-tip-label">
+                        WEATHER
+                    </span>
+
+                    <h3>
+                        Watch the Weather
+                    </h3>
+
+                    <p>
+                        Rain may affect irrigation
+                        and spraying schedules.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- TIP 3 -->
+
+            <article class="farm-tip-card">
+
+                <div class="farm-tip-image">
+
+                    <img
+                        src="assets/images/farm-tip-crop.png"
+                        alt="Crop inspection"
+                        onerror="this.style.display='none';"
+                    >
+
+                    <div class="farm-tip-icon gold-tip-icon">
+
+                        <i class="fa-solid fa-seedling"></i>
+
+                    </div>
+
+                </div>
+
+
+                <div class="farm-tip-content">
+
+                    <span class="farm-tip-label">
+                        CROP CARE
+                    </span>
+
+                    <h3>
+                        Inspect Your Crops
+                    </h3>
+
+                    <p>
+                        Regularly check leaves for
+                        early signs of pests or disease.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FARM OVERVIEW
+         
+         IMPORTANT:
+         DO NOT REMOVE THIS SECTION YET.
+         It can be removed later when explicitly requested.
+         ================================================= -->
+
+    <section class="farm-overview-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-eyebrow">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    FARM INFORMATION
+                </span>
+
+                <h2>
+                    Farm Overview
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="section-action-button"
+                data-module="my-farm"
+            >
+                View Farm
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="farm-overview-grid">
+
+
+            <article class="overview-card">
+
+                <div class="overview-icon green-icon">
+
+                    <i class="fa-solid fa-ruler-combined"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Land
+                    </span>
+
+                    <strong>
+                        2.5 Acres
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="overview-card">
+
+                <div class="overview-icon green-icon">
+
+                    <i class="fa-solid fa-seedling"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Active Crops
+                    </span>
+
+                    <strong>
+                        Tomato
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="overview-card">
+
+                <div class="overview-icon blue-drop-icon">
+
+                    <i class="fa-solid fa-water"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Water Status
+                    </span>
+
+                    <strong>
+                        Good
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="overview-card">
+
+                <div class="overview-icon gold-icon">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Growth Score
+                    </span>
+
+                    <strong>
+                        92%
+                    </strong>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+                    
+                        
+
+                            
+                                
+
+
+                            
+                                <div class="yield-chart">
+
+                                    <span style="height:25%"></span>
+                                    <span style="height:35%"></span>
+                                    <span style="height:42%"></span>
+                                    <span style="height:55%"></span>
+                                    <span style="height:68%"></span>
+                                    <span style="height:82%"></span>
+                                    <span style="height:100%"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    
+                        </section>
+
+
+                        <!-- WEATHER MINI PANEL -->
+
+                        <section class="dashboard-weather-panel">
+
+                            <div class="dashboard-panel-header">
+
+                                <div>
+
+                                    <span>
+                                        TODAY'S WEATHER
+                                    </span>
+
+                                    <h2>
+                                        Weather Forecast
+                                    </h2>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    data-module="weather"
+                                    data-requires-login="true">
+
+                                    View 7 Days
+                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="weather-panel-content">
+
+
+                                <div class="weather-current-icon">
+
+                                    <i
+                                        class="fa-solid fa-cloud-sun">
+                                    </i>
+
+                                </div>
+
+
+                                <div class="weather-current-info">
+
+                                    <strong
+                                        id="dashboard-current-temperature">
+                                        28°C
+                                    </strong>
+
+                                    <span
+                                        id="dashboard-current-condition">
+                                        Partly Cloudy
+                                    </span>
+
+                                </div>
+
+
+                                <div class="weather-detail-mini">
+
+                                    <span>
+                                        <i class="fa-solid fa-droplet"></i>
+                                        Humidity
+                                    </span>
+
+                                    <strong id="dashboard-humidity">
+                                        72%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="weather-detail-mini">
+
+                                    <span>
+                                        <i class="fa-solid fa-wind"></i>
+                                        Wind
+                                    </span>
+
+                                    <strong id="dashboard-wind">
+                                        12 km/h
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     MY FARM MODULE
+                     ================================================= -->
+
+                <section
+                    class="module-section"
+                    data-module-section="my-farm"
+                    hidden>
+
+                    <div class="module-page">
+
+                        <div class="module-page-header">
+
+                            <div>
+
+                                <span class="module-eyebrow">
+                                    FARM MANAGEMENT
+                                </span>
+
+                                <h1>
+                                    My Farm
+                                </h1>
+
+                                <p>
+                                    Manage your farm information
+                                    and crop details.
+                                </p>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="primary-button"
+                                data-action="profile">
+
+                                <i class="fa-solid fa-pen"></i>
+                                Edit Farm
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="module-placeholder-grid">
+
+                            <div class="module-card">
+
+                                <i class="fa-solid fa-wheat-awn"></i>
+
+                                <h3>
+                                    Your Crops
+                                </h3>
+
+                                <p>
+                                    View and manage your current crops.
+                                </p>
+
+                            </div>
+
+
+                            <div class="module-card">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                <h3>
+                                    Farm Location
+                                </h3>
+
+                                <p>
+                                    Your farm location will appear here.
+                                </p>
+
+                            </div>
+
+
+                            <div class="module-card">
+
+                                <i class="fa-solid fa-calendar-days"></i>
+
+                                <h3>
+                                    Crop Calendar
+                                </h3>
+
+                                <p>
+                                    Track important crop activities.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     AI CROP DOCTOR
+                     ================================================= -->
+
+                <section
+                    class="module-section integrated-module-section"
+                    data-module-section="crop-doctor"
+                    hidden>
+
+                    <iframe
+                        class="integrated-module-frame"
+                        src="../modules/1_crop_disease_freshness.html"
+                        title="AI Crop Doctor"
+                        allow="geolocation; camera">
+                    </iframe>
+
+                </section>
+
+                <section
+                    class="module-section"
+                    data-module-section="mitra"
+                    hidden>
+
+                    <div class="module-page mitra-page">
+
+                        <div class="module-page-header">
+
+                            <div>
+
+                                <span class="module-eyebrow">
+                                    AI FARMING ASSISTANT
+                                </span>
+
+                                <h1>
+                                    Mitra AI
+                                </h1>
+
+                                <p>
+                                    Your intelligent farming companion.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mitra-chat-container">
+
+                            <div class="mitra-chat-header">
+
+                                <div class="mitra-header-left">
+
+                                    <div class="mitra-avatar">
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+
+                                    <div>
+                                        <strong>Mitra AI</strong>
+                                        <span>Agricultural Advisory Intelligence • 24x7</span>
+                                    </div>
+
+                                </div>
+
+                                <span class="mitra-online">
+                                    <span></span>
+                                    Online
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="mitra-messages"
+                                id="mitra-messages">
+
+                                <div class="mitra-message bot">
+
+                                    <div class="mitra-message-avatar bot-avatar">
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+
+                                    <div class="mitra-bubble bot-bubble">
+
+                                        <p>
+                                            Namaste! 🌱
+                                        </p>
+
+                                        <p>
+                                            I'm Mitra. Ask me anything about your farm, crops, weather or farming practices.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <form
+                                class="mitra-input-area"
+                                id="mitra-chat-form">
+
+                                <input
+                                    type="text"
+                                    id="mitra-chat-input"
+                                    placeholder="Ask Mitra about your farm..."
+                                    autocomplete="off">
+
+                                <button
+                                    type="submit"
+                                    class="mitra-send-btn"
+                                    aria-label="Send message">
+
+                                    <i class="fa-solid fa-paper-plane"></i>
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+     WEATHER
+     ================================================= -->
+
+<section
+    class="module-section"
+    data-module-section="weather"
+    hidden>
+
+    <div class="module-page">
+
+        <div class="module-page-header">
+
+            <div>
+
+                <span class="module-eyebrow">
+                    FARM INTELLIGENCE
+                </span>
+
+                <h1>
+                    Weather Forecast
+                </h1>
+
+                <p>
+                    Detailed 7-day weather forecast
+                    for your farm.
+                </p>
+
+            </div>
+
+            <div class="module-location">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <span id="weather-location">
+                    Pune, Maharashtra
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- CURRENT WEATHER -->
+
+        <div class="weather-current-card">
+
+            <div class="weather-current-main">
+
+                <div class="weather-large-icon">
+
+                    <i class="fa-solid fa-cloud-sun"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        TODAY
+                    </span>
+
+                    <strong id="weather-current-temp">
+                        28°C
+                    </strong>
+
+                    <h2 id="weather-current-condition">
+                        Partly Cloudy
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="weather-current-details">
+
+                <div>
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    <span>
+                        Humidity
+                    </span>
+
+                    <strong id="weather-humidity">
+                        72%
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-wind"></i>
+
+                    <span>
+                        Wind
+                    </span>
+
+                    <strong id="weather-wind">
+                        12 km/h
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-temperature-half"></i>
+
+                    <span>
+                        Feels Like
+                    </span>
+
+                    <strong id="weather-feels">
+                        29°C
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 7-DAY FORECAST -->
+
+        <div class="section-heading module-section-heading">
+
+            <h2>
+                7-Day Forecast
+            </h2>
+
+        </div>
+
+
+        <div
+            class="weather-grid"
+            id="weather-forecast-grid">
+
+
+            <!-- MONDAY -->
+
+            <div class="weather-day-card">
+
+                <span>
+                    17 Aug · Mon
+                </span>
+
+                <i class="fa-solid fa-cloud-rain"></i>
+
+                <strong>
+                    27°C
+                </strong>
+
+                <small>
+                    Rainy · 70% rain
+                </small>
+
+            </div>
+
+
+            <!-- TUESDAY -->
+
+            <div class="weather-day-card">
+
+                <span>
+                    18 Aug · Tue
+                </span>
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <strong>
+                    28°C
+                </strong>
+
+                <small>
+                    Light Rain · 60% rain
+                </small>
+
+            </div>
+
+
+            <!-- WEDNESDAY -->
+
+            <div class="weather-day-card">
+
+                <span>
+                    19 Aug · Wed
+                </span>
+
+                <i class="fa-solid fa-cloud"></i>
+
+                <strong>
+                    28°C
+                </strong>
+
+                <small>
+                    Cloudy · 45% rain
+                </small>
+
+            </div>
+
+
+            <!-- THURSDAY -->
+
+            <div class="weather-day-card">
+
+                <span>
+                    20 Aug · Thu
+                </span>
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <strong>
+                    27°C
+                </strong>
+
+                <small>
+                    Scattered Rain · 55% rain
+                </small>
+
+            </div>
+
+
+            <!-- FRIDAY -->
+
+            <div class="weather-day-card">
+
+                <span>
+                    21 Aug · Fri
+                </span>
+
+                <i class="fa-solid fa-cloud-rain"></i>
+
+                <strong>
+                    27°C
+                </strong>
+
+                <small>
+                    Rainy · 65% rain
+                </small>
+
+            </div>
+
+
+            <!-- SATURDAY -->
+
+            <div class="weather-day-card">
+
+                <span>
+                    22 Aug · Sat
+                </span>
+
+                <i class="fa-solid fa-cloud"></i>
+
+                <strong>
+                    28°C
+                </strong>
+
+                <small>
+                    Mostly Cloudy · 40% rain
+                </small>
+
+            </div>
+
+
+            <!-- SUNDAY -->
+
+            <div class="weather-day-card">
+
+                <span>
+                    23 Aug · Sun
+                </span>
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <strong>
+                    28°C
+                </strong>
+
+                <small>
+                    Light Rain · 50% rain
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             WEATHER TEMPERATURE CHART
+             ================================================= -->
+
+        <div class="weather-chart-card">
+
+    <div class="weather-chart-header">
+
+        <div>
+    <span class="module-eyebrow">
+        Weather Analysis
+    </span>
+
+    <h2>
+        Temperature & Rain Probability
+    </h2>
+    </div>
+
+        <span class="weather-chart-unit">
+            Next 7 Days
+        </span>
+
+    </div>
+
+
+    <div class="weather-chart-wrapper">
+
+        <div class="weather-chart-y-axis">
+            <span>32°C</span>
+            <span>30°C</span>
+            <span>28°C</span>
+            <span>26°C</span>
+            <span>24°C</span>
+        </div>
+
+
+        <div class="weather-chart-area">
+
+            <div class="weather-chart-grid-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+
+            <svg
+                class="weather-svg"
+                viewBox="0 0 700 190"
+                preserveAspectRatio="none"
+                aria-label="7 day weather temperature and rain chart"
+            >
+
+                <!-- MINIMUM TEMPERATURE -->
+                <polyline
+                    class="weather-line min-line"
+                    points="
+                        20,145
+                        130,155
+                        240,135
+                        350,145
+                        460,155
+                        570,135
+                        680,125
+                    "
+                />
+
+                <!-- MAXIMUM TEMPERATURE -->
+                <polyline
+                    class="weather-line max-line"
+                    points="
+                        20,70
+                        130,55
+                        240,40
+                        350,85
+                        460,55
+                        570,25
+                        680,40
+                    "
+                />
+
+                <!-- RAIN PROBABILITY -->
+                <polyline
+                    class="weather-line rain-line"
+                    points="
+                        20,105
+                        130,115
+                        240,135
+                        350,120
+                        460,110
+                        570,140
+                        680,125
+                    "
+                />
+
+
+                <!-- MINIMUM DOTS -->
+
+                <circle class="min-dot" cx="20" cy="145" r="5"/>
+                <circle class="min-dot" cx="130" cy="155" r="5"/>
+                <circle class="min-dot" cx="240" cy="135" r="5"/>
+                <circle class="min-dot" cx="350" cy="145" r="5"/>
+                <circle class="min-dot" cx="460" cy="155" r="5"/>
+                <circle class="min-dot" cx="570" cy="135" r="5"/>
+                <circle class="min-dot" cx="680" cy="125" r="5"/>
+
+
+                <!-- MAXIMUM DOTS -->
+
+                <circle class="max-dot" cx="20" cy="70" r="5"/>
+                <circle class="max-dot" cx="130" cy="55" r="5"/>
+                <circle class="max-dot" cx="240" cy="40" r="5"/>
+                <circle class="max-dot" cx="350" cy="85" r="5"/>
+                <circle class="max-dot" cx="460" cy="55" r="5"/>
+                <circle class="max-dot" cx="570" cy="25" r="5"/>
+                <circle class="max-dot" cx="680" cy="40" r="5"/>
+
+
+                <!-- RAIN DOTS -->
+
+                <circle class="rain-dot" cx="20" cy="105" r="5"/>
+                <circle class="rain-dot" cx="130" cy="115" r="5"/>
+                <circle class="rain-dot" cx="240" cy="135" r="5"/>
+                <circle class="rain-dot" cx="350" cy="120" r="5"/>
+                <circle class="rain-dot" cx="460" cy="110" r="5"/>
+                <circle class="rain-dot" cx="570" cy="140" r="5"/>
+                <circle class="rain-dot" cx="680" cy="125" r="5"/>
+
+            </svg>
+
+
+            <div class="weather-chart-days">
+                <span>17 Aug · Mon</span>
+                <span>18 Aug · Tue</span>
+                <span>19 Aug · Wed</span>
+                <span>20 Aug · Thu</span>
+                <span>21 Aug · Fri</span>
+                <span>22 Aug · Sat</span>
+                <span>23 Aug · Sun</span>            
+        </div>
+
+    </div>
+
+
+    <div class="weather-chart-legend">
+
+    <span>
+        <i class="fa-solid fa-circle min-legend"></i>
+        Minimum Temperature
+    </span>
+
+    <span>
+        <i class="fa-solid fa-circle max-legend"></i>
+        Maximum Temperature
+    </span>
+
+    <span>
+        <i class="fa-solid fa-circle rain-legend"></i>
+        Rain Probability
+    </span>
+
+</div>
+
+</div>
+
+                
+
+
+
+
+    <section
+    class="module-section"
+    data-module-section="schemes"
+    hidden>
+
+    <div class="module-page government-schemes-page">
+
+        <div class="government-schemes-card">
+
+            <!-- Header Section -->
+            <div class="government-schemes-header">
+
+                <div class="government-schemes-title-wrap">
+
+                    <div class="government-schemes-icon">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+
+                    <h1>Government Schemes</h1>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="government-schemes-view-all">
+                    View All <span aria-hidden="true">→</span>
+                </button>
+
+            </div>
+
+            <!-- Dynamic Schemes List -->
+            <div
+                id="schemes-container"
+                class="government-schemes-list">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- =====================================================
+         INTEGRATED FRIEND MODULES
+         ===================================================== -->
+
+    <section
+        class="module-section integrated-module-section"
+        data-module-section="market"
+        hidden>
+
+        <iframe
+            class="integrated-module-frame"
+            src="../modules/2_live_market_prices.html"
+            title="Market Prices"
+            allow="geolocation">
+        </iframe>
+
+    </section>
+
+
+    <section
+        class="module-section integrated-module-section"
+        data-module-section="cold-storage"
+        hidden>
+
+        <iframe
+            class="integrated-module-frame"
+            src="../modules/3_cold_storage.html"
+            title="Cold Storage"
+            allow="geolocation">
+        </iframe>
+
+    </section>
+
+
+    <section
+        class="module-section integrated-module-section"
+        data-module-section="transportation"
+        hidden>
+
+        <iframe
+            class="integrated-module-frame"
+            src="../modules/4_shared_transportation.html"
+            title="Transportation"
+            allow="geolocation">
+        </iframe>
+
+    </section>
+
+
+    <section
+        class="module-section integrated-module-section"
+        data-module-section="fpo-bulk-selling"
+        hidden>
+
+        <iframe
+            class="integrated-module-frame"
+            src="../modules/5_fpo_bulk_selling.html"
+            title="FPO Bulk Selling"
+            allow="geolocation">
+        </iframe>
+
+    </section>
+<!-- JAVASCRIPT -->
+
+    <script src="js/translation.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

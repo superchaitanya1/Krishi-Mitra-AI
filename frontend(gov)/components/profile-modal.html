@@ -1,0 +1,644 @@
+<!-- =====================================================
+     KRISHI-MITRA
+     PROFILE CREATION / EDIT MODAL
+     ===================================================== -->
+
+<div
+    class="modal profile-modal"
+    id="profileModal"
+    aria-hidden="true">
+
+    <!-- =================================================
+         MODAL OVERLAY
+         ================================================= -->
+
+    <div
+        class="modal-overlay"
+        data-close-profile>
+    </div>
+
+
+    <!-- =================================================
+         MODAL CONTAINER
+         ================================================= -->
+
+    <div
+        class="modal-container profile-modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="profileModalTitle">
+
+
+        <!-- =================================================
+             CLOSE BUTTON
+             ================================================= -->
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-profile
+            aria-label="Close profile">
+
+            ×
+
+        </button>
+
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <div class="profile-modal-header">
+
+            <div class="profile-modal-icon">
+                👨‍🌾
+            </div>
+
+            <div>
+
+                <h2 id="profileModalTitle">
+                    Create Your Farmer Profile
+                </h2>
+
+                <p>
+                    Tell Mitra a little about your farm
+                    so we can give you personalized advice.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PROFILE FORM
+             ================================================= -->
+
+        <form
+            id="profileForm"
+            data-profile-form>
+
+
+            <!-- =================================================
+                 PROFILE PHOTO
+                 ================================================= -->
+
+            <div class="profile-photo-section">
+
+                <div class="profile-photo-wrapper">
+
+                    <img
+                        src=""
+                        alt="Profile preview"
+                        class="profile-image-preview"
+                        data-profile-image-preview>
+
+
+                    <div class="profile-image-placeholder">
+
+                        👨‍🌾
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-photo-content">
+
+                    <h4>
+                        Profile Photo
+                    </h4>
+
+                    <p>
+                        Add a photo so your profile
+                        feels more personal.
+                    </p>
+
+
+                    <label
+                        for="profileImage"
+                        class="profile-image-button">
+
+                        Choose Photo
+
+                    </label>
+
+                    <input
+                        type="file"
+                        id="profileImage"
+                        name="profileImage"
+                        data-profile-image
+                        accept="image/*"
+                        hidden>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PERSONAL INFORMATION
+                 ================================================= -->
+
+            <div class="profile-form-section">
+
+                <div class="profile-section-title">
+
+                    <span>
+                        👤
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Personal Information
+                        </h3>
+
+                        <p>
+                            Basic information about you
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-form-grid">
+
+
+                    <!-- Name -->
+
+                    <div class="form-group">
+
+                        <label for="profileName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileName"
+                            name="name"
+                            class="form-input"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required>
+
+                    </div>
+
+
+                    <!-- Mobile -->
+
+                    <div class="form-group">
+
+                        <label for="profileMobile">
+                            Mobile Number
+                        </label>
+
+                        <div class="mobile-input-wrapper">
+
+                            <span class="country-code">
+                                +91
+                            </span>
+
+                            <input
+                                type="tel"
+                                id="profileMobile"
+                                name="mobile"
+                                class="form-input mobile-input"
+                                placeholder="10-digit mobile number"
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="tel">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FARM LOCATION
+                 ================================================= -->
+
+            <div class="profile-form-section">
+
+                <div class="profile-section-title">
+
+                    <span>
+                        📍
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Farm Location
+                        </h3>
+
+                        <p>
+                            Helps Mitra provide local weather
+                            and farming information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-form-grid">
+
+
+                    <!-- State -->
+
+                    <div class="form-group">
+
+                        <label for="profileState">
+                            State
+                        </label>
+
+                        <select
+                            id="profileState"
+                            name="state"
+                            class="form-input"
+                            required>
+
+                            <option value="">
+                                Select State
+                            </option>
+
+                            <option value="Maharashtra">
+                                Maharashtra
+                            </option>
+
+                            <option value="Gujarat">
+                                Gujarat
+                            </option>
+
+                            <option value="Madhya Pradesh">
+                                Madhya Pradesh
+                            </option>
+
+                            <option value="Karnataka">
+                                Karnataka
+                            </option>
+
+                            <option value="Rajasthan">
+                                Rajasthan
+                            </option>
+
+                            <option value="Uttar Pradesh">
+                                Uttar Pradesh
+                            </option>
+
+                            <option value="Telangana">
+                                Telangana
+                            </option>
+
+                            <option value="Andhra Pradesh">
+                                Andhra Pradesh
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- District -->
+
+                    <div class="form-group">
+
+                        <label for="profileDistrict">
+                            District
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileDistrict"
+                            name="district"
+                            class="form-input"
+                            placeholder="Enter your district"
+                            required>
+
+                    </div>
+
+
+                    <!-- Village -->
+
+                    <div class="form-group full-width">
+
+                        <label for="profileVillage">
+                            Village / Town
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileVillage"
+                            name="village"
+                            class="form-input"
+                            placeholder="Enter your village or town">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FARM INFORMATION
+                 ================================================= -->
+
+            <div class="profile-form-section">
+
+                <div class="profile-section-title">
+
+                    <span>
+                        🌱
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Farm Information
+                        </h3>
+
+                        <p>
+                            This helps us personalize your
+                            crop-related recommendations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-form-grid">
+
+
+                    <!-- Farm Size -->
+
+                    <div class="form-group">
+
+                        <label for="profileFarmSize">
+                            Farm Size
+                        </label>
+
+                        <div class="input-with-unit">
+
+                            <input
+                                type="number"
+                                id="profileFarmSize"
+                                name="farmSize"
+                                class="form-input"
+                                placeholder="e.g. 5"
+                                min="0"
+                                step="0.01">
+
+                            <span>
+                                Acres
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Main Crop -->
+
+                    <div class="form-group">
+
+                        <label for="profileCrop">
+                            Main Crop
+                        </label>
+
+                        <select
+                            id="profileCrop"
+                            name="crop"
+                            class="form-input"
+                            required>
+
+                            <option value="">
+                                Select your main crop
+                            </option>
+
+                            <option value="Rice">
+                                Rice
+                            </option>
+
+                            <option value="Wheat">
+                                Wheat
+                            </option>
+
+                            <option value="Cotton">
+                                Cotton
+                            </option>
+
+                            <option value="Sugarcane">
+                                Sugarcane
+                            </option>
+
+                            <option value="Soybean">
+                                Soybean
+                            </option>
+
+                            <option value="Maize">
+                                Maize
+                            </option>
+
+                            <option value="Onion">
+                                Onion
+                            </option>
+
+                            <option value="Tomato">
+                                Tomato
+                            </option>
+
+                            <option value="Potato">
+                                Potato
+                            </option>
+
+                            <option value="Chickpea">
+                                Chickpea
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Soil Type -->
+
+                    <div class="form-group">
+
+                        <label for="profileSoilType">
+                            Soil Type
+                        </label>
+
+                        <select
+                            id="profileSoilType"
+                            name="soilType"
+                            class="form-input">
+
+                            <option value="">
+                                Select soil type
+                            </option>
+
+                            <option value="Black Soil">
+                                Black Soil
+                            </option>
+
+                            <option value="Red Soil">
+                                Red Soil
+                            </option>
+
+                            <option value="Alluvial Soil">
+                                Alluvial Soil
+                            </option>
+
+                            <option value="Laterite Soil">
+                                Laterite Soil
+                            </option>
+
+                            <option value="Sandy Soil">
+                                Sandy Soil
+                            </option>
+
+                            <option value="Loamy Soil">
+                                Loamy Soil
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Irrigation -->
+
+                    <div class="form-group">
+
+                        <label for="profileIrrigation">
+                            Irrigation Method
+                        </label>
+
+                        <select
+                            id="profileIrrigation"
+                            name="irrigation"
+                            class="form-input">
+
+                            <option value="">
+                                Select irrigation method
+                            </option>
+
+                            <option value="Rainfed">
+                                Rainfed
+                            </option>
+
+                            <option value="Drip Irrigation">
+                                Drip Irrigation
+                            </option>
+
+                            <option value="Sprinkler">
+                                Sprinkler
+                            </option>
+
+                            <option value="Canal">
+                                Canal
+                            </option>
+
+                            <option value="Borewell">
+                                Borewell
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PERSONALIZATION INFO
+                 ================================================= -->
+
+            <div class="profile-personalization-note">
+
+                <span class="personalization-icon">
+                    ✨
+                </span>
+
+                <div>
+
+                    <strong>
+                        Why do we need this?
+                    </strong>
+
+                    <p>
+                        Your profile helps Krishi-Mitra
+                        personalize crop health, weather,
+                        market price and irrigation information
+                        for your farm.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORM ACTIONS
+                 ================================================= -->
+
+            <div class="profile-form-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close-profile>
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    <span>
+                        Save My Profile
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>

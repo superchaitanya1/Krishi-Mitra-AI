@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Krishi-Mitra | Buyer Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="buyer-sidebar" id="buyerSidebar">
+
+        
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-heading">MAIN</p>
+
+            <button class="nav-item active" data-section="dashboard">
+                <span class="nav-icon">🏠</span>
+                <span>Dashboard</span>
+            </button>
+
+            <button class="nav-item" data-section="browse">
+                <span class="nav-icon">🌾</span>
+                <span>Browse Crops</span>
+            </button>
+
+            <button class="nav-item" data-section="saved">
+                <span class="nav-icon">♡</span>
+                <span>Saved Crops</span>
+            </button>
+
+            <p class="nav-heading purchase-heading">PURCHASE</p>
+
+            <button class="nav-item" data-section="harvest">
+                <span class="nav-icon">🌾</span>
+                <span>Upcoming Harvest</span>
+            </button>
+
+            <button class="nav-item" data-section="delivery">
+                <span class="nav-icon">🚚</span>
+                <span>Transport & Connections</span>
+            </button>
+
+            <p class="nav-heading account-heading">ACCOUNT</p>
+
+            <button class="nav-item" data-section="profile">
+                <span class="nav-icon">👤</span>
+                <span>My Profile</span>
+            </button>
+
+        </nav>
+
+<div class="sidebar-bottom">
+    <div class="sidebar-footer">
+
+        <div class="footer-leaf">
+            <i>🌿</i>
+        </div>
+
+        <div>
+            <span>Grow smarter.</span>
+            <strong>Farm better.</strong>
+        </div>
+
+    </div>
+</div>    </aside>
+
+
+    <!-- ================= MAIN AREA ================= -->
+    <main class="buyer-main">
+
+        <!-- TOPBAR -->
+        <header class="buyer-topbar" id="buyerTopbar" data-brand="Krishi-Mitra" data-tagline="YOUR SMART FARMING COMPANION">
+
+            <button class="mobile-menu" id="mobileMenu">
+                ☰
+            </button>
+
+            <div class="topbar-search">
+                <span>🔍</span>
+                <input
+                    type="text"
+                    id="globalSearch"
+                    placeholder="Search crops, farmers..."
+                >
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="language-wrapper">
+
+    <button class="language-option active" data-language="English">
+        English
+    </button>
+
+    <span class="language-divider">|</span>
+
+    <button class="language-option" data-language="Hindi">
+        हिन्दी
+    </button>
+
+    <span class="language-divider">|</span>
+
+    <button class="language-option" data-language="Marathi">
+        मराठी
+    </button>
+
+</div>
+                <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
+    🔔
+    <span class="notification-dot"></span>
+</button>
+
+<div class="buyer-profile-top">
+    <div class="profile-avatar">👤</div>
+
+    <div class="profile-name">
+        <strong>Guest User</strong>
+        <span>Guest Mode</span>
+    </div>
+
+    <span class="profile-arrow">⌄</span>
+</div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+        <div class="buyer-content">
+
+            <!-- ================= DASHBOARD ================= -->
+            <section class="dashboard-section active-section" id="dashboard">
+
+                <!-- HERO -->
+                <div class="buyer-hero">
+
+                    <div class="hero-content">
+                        <span class="hero-label">BUYER DASHBOARD</span>
+
+                        <h1>Good Morning, Buyer </h1>
+
+                        <p>
+                            Find fresh produce directly from trusted farmers
+                            at the right price and quality.
+                        </p>
+
+                        <button class="primary-btn" id="browseProduceBtn">
+                            🛒 Browse Produce
+                        </button>
+                    </div>
+
+                    <div class="hero-illustration">
+                        <div class="hero-circle circle-one"></div>
+                        <div class="hero-circle circle-two"></div>
+                        <div class="hero-produce"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- SUMMARY CARDS -->
+                <div class="summary-grid">
+
+                    <div class="summary-card">
+                        <div class="summary-icon produce-icon">🌾</div>
+
+                        <div>
+                            <span>Available Produce</span>
+                            <h3>128 Listings</h3>
+                            <small>Fresh produce from farmers</small>
+                        </div>
+                    </div>
+
+
+                    <div class="summary-card">
+                        <div class="summary-icon deal-icon">💰</div>
+
+                        <div>
+                            <span>Best Deal</span>
+                            <h3>Tomato · ₹24/kg</h3>
+                            <small>Good market price</small>
+                        </div>
+                    </div>
+
+
+                    <div class="summary-card">
+                        <div class="summary-icon farmer-icon">👨‍🌾</div>
+
+                        <div>
+                            <span>Nearby Farmers</span>
+                            <h3>24 Farmers</h3>
+                            <small>Within selected area</small>
+                        </div>
+                    </div>
+
+
+                    <div class="summary-card">
+                        <div class="summary-icon harvest-icon">🌾</div>
+                        <div>
+                            <span>Upcoming Harvests</span>
+                            <h3>2 Crops</h3>
+                            <small>Expected this month</small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- SECTION HEADER -->
+                <div class="section-header">
+                    <div>
+                        <span class="section-tag">FRESH FROM FARM</span>
+                        <h2>Available Produce</h2>
+                        <p>Explore fresh produce available from trusted farmers.</p>
+                    </div>
+
+                    <button class="text-btn" data-section-target="browse">
+                        View All →
+                    </button>
+                </div>
+
+
+                <!-- PRODUCE GRID -->
+                <div class="produce-grid" id="dashboardProduceGrid">
+
+                    <article class="produce-card" data-name="tomato">
+
+                        <div class="produce-image tomato-bg">
+                            <span>🍅</span>
+                            <button class="save-btn" data-saved="false">♡</button>
+                            <span class="quality-badge">Grade A</span>
+                        </div>
+
+                        <div class="produce-info">
+
+                            <div class="produce-title-row">
+                                <h3>Fresh Tomato</h3>
+                                <span class="rating">★ 4.8</span>
+                            </div>
+
+                            <p class="farmer-name">👨‍🌾 Rajesh Patil</p>
+
+                            <div class="produce-meta">
+                                <span>📍 Pune</span>
+                                <span>500 kg</span>
+                            </div>
+
+                            <div class="produce-footer">
+                                <div>
+                                    <small>Price</small>
+                                    <strong>₹24/kg</strong>
+                                </div>
+
+                                <button class="outline-btn view-details">
+                                    View Details
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="produce-card" data-name="potato">
+
+                        <div class="produce-image potato-bg">
+                            <span>🥔</span>
+                            <button class="save-btn" data-saved="false">♡</button>
+                            <span class="quality-badge">Grade A</span>
+                        </div>
+
+                        <div class="produce-info">
+
+                            <div class="produce-title-row">
+                                <h3>Fresh Potato</h3>
+                                <span class="rating">★ 4.7</span>
+                            </div>
+
+                            <p class="farmer-name">👨‍🌾 Suresh More</p>
+
+                            <div class="produce-meta">
+                                <span>📍 Pune</span>
+                                <span>800 kg</span>
+                            </div>
+
+                            <div class="produce-footer">
+                                <div>
+                                    <small>Price</small>
+                                    <strong>₹22/kg</strong>
+                                </div>
+
+                                <button class="outline-btn view-details">
+                                    View Details
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="produce-card" data-name="onion">
+
+                        <div class="produce-image onion-bg">
+                            <span>🧅</span>
+                            <button class="save-btn" data-saved="false">♡</button>
+                            <span class="quality-badge">Grade A</span>
+                        </div>
+
+                        <div class="produce-info">
+
+                            <div class="produce-title-row">
+                                <h3>Red Onion</h3>
+                                <span class="rating">★ 4.9</span>
+                            </div>
+
+                            <p class="farmer-name">👨‍🌾 Mahesh Shinde</p>
+
+                            <div class="produce-meta">
+                                <span>📍 Nashik</span>
+                                <span>600 kg</span>
+                            </div>
+
+                            <div class="produce-footer">
+                                <div>
+                                    <small>Price</small>
+                                    <strong>₹30/kg</strong>
+                                </div>
+
+                                <button class="outline-btn view-details">
+                                    View Details
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- LOWER GRID -->
+                <div class="dashboard-lower-grid">
+
+                    <!-- RECOMMENDED -->
+                    <div class="dashboard-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="section-tag">SMART PICK</span>
+                                <h2>Recommended for You</h2>
+                            </div>
+
+                            <span class="match-badge">⭐ Best Match</span>
+                        </div>
+
+                        <div class="recommendation-card">
+
+                            <div class="recommendation-icon">
+                                🥔
+                            </div>
+
+                            <div class="recommendation-info">
+                                <h3>Grade A Potato</h3>
+                                <p>From Suresh More · Pune</p>
+
+                                <div class="recommendation-details">
+                                    <span>800 kg</span>
+                                    <span>₹22/kg</span>
+                                    <span>⭐ 4.7</span>
+                                </div>
+                            </div>
+
+                            <button class="primary-small-btn">
+                                View
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BEST VALUE -->
+                    <div class="dashboard-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="section-tag">VALUE PICK</span>
+                                <h2>Best Value</h2>
+                            </div>
+                        </div>
+
+                        <div class="value-card">
+
+                            <div class="value-produce">
+                                <span>🍅</span>
+                                <div>
+                                    <h3>Tomato</h3>
+                                    <p>Grade A · 500 kg</p>
+                                </div>
+                            </div>
+
+                            <div class="value-price">
+                                <strong>₹24/kg</strong>
+                                <span>↓ Good Price</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= BROWSE ================= -->
+            <section class="dashboard-section" id="browse">
+
+                <div class="page-heading">
+                    <span class="section-tag">MARKETPLACE</span>
+                    <h1>Browse Crops</h1>
+                    <p>Find agricultural produce directly from trusted farmers.</p>
+                </div>
+
+                <div class="browse-controls">
+
+                    <div class="browse-search">
+                        <span>🔍</span>
+                        <input
+                            type="text"
+                            id="produceSearch"
+                            placeholder="Search produce..."
+                        >
+                    </div>
+
+                    <select id="locationFilter">
+                        <option value="all">All Locations</option>
+                        <option value="pune">Pune</option>
+                        <option value="nashik">Nashik</option>
+                        <option value="satara">Satara</option>
+                    </select>
+
+                    <select id="qualityFilter">
+                        <option value="all">All Quality</option>
+                        <option value="grade-a">Grade A</option>
+                        <option value="grade-b">Grade B</option>
+                    </select>
+
+                    <select id="priceFilter">
+                        <option value="all">All Prices</option>
+                        <option value="low">Under ₹25/kg</option>
+                        <option value="medium">₹25–₹30/kg</option>
+                        <option value="high">Above ₹30/kg</option>
+                    </select>
+
+                </div>
+
+
+                <div class="produce-grid browse-grid" id="browseGrid">
+
+                    <article class="produce-card browse-card" data-name="tomato" data-location="pune" data-price="24">
+
+                        <div class="produce-image tomato-bg">
+                            <span>🍅</span>
+                            <button class="save-btn" data-saved="false">♡</button>
+                            <span class="quality-badge">Grade A</span>
+                        </div>
+
+                        <div class="produce-info">
+                            <div class="produce-title-row">
+                                <h3>Fresh Tomato</h3>
+                                <span class="rating">★ 4.8</span>
+                            </div>
+
+                            <p class="farmer-name">👨‍🌾 Rajesh Patil</p>
+
+                            <div class="produce-meta">
+                                <span>📍 Pune</span>
+                                <span>500 kg</span>
+                            </div>
+
+                            <div class="produce-footer">
+                                <div>
+                                    <small>Price</small>
+                                    <strong>₹24/kg</strong>
+                                </div>
+                                <button class="outline-btn view-details">View Details</button>
+                            </div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="produce-card browse-card" data-name="potato" data-location="pune" data-price="22">
+
+                        <div class="produce-image potato-bg">
+                            <span>🥔</span>
+                            <button class="save-btn" data-saved="false">♡</button>
+                            <span class="quality-badge">Grade A</span>
+                        </div>
+
+                        <div class="produce-info">
+                            <div class="produce-title-row">
+                                <h3>Fresh Potato</h3>
+                                <span class="rating">★ 4.7</span>
+                            </div>
+
+                            <p class="farmer-name">👨‍🌾 Suresh More</p>
+
+                            <div class="produce-meta">
+                                <span>📍 Pune</span>
+                                <span>800 kg</span>
+                            </div>
+
+                            <div class="produce-footer">
+                                <div>
+                                    <small>Price</small>
+                                    <strong>₹22/kg</strong>
+                                </div>
+                                <button class="outline-btn view-details">View Details</button>
+                            </div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="produce-card browse-card" data-name="onion" data-location="nashik" data-price="30">
+
+                        <div class="produce-image onion-bg">
+                            <span>🧅</span>
+                            <button class="save-btn" data-saved="false">♡</button>
+                            <span class="quality-badge">Grade A</span>
+                        </div>
+
+                        <div class="produce-info">
+                            <div class="produce-title-row">
+                                <h3>Red Onion</h3>
+                                <span class="rating">★ 4.9</span>
+                            </div>
+
+                            <p class="farmer-name">👨‍🌾 Mahesh Shinde</p>
+
+                            <div class="produce-meta">
+                                <span>📍 Nashik</span>
+                                <span>600 kg</span>
+                            </div>
+
+                            <div class="produce-footer">
+                                <div>
+                                    <small>Price</small>
+                                    <strong>₹30/kg</strong>
+                                </div>
+                                <button class="outline-btn view-details">View Details</button>
+                            </div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="produce-card browse-card" data-name="carrot" data-location="satara" data-price="28">
+
+                        <div class="produce-image carrot-bg">
+                            <span>🥕</span>
+                            <button class="save-btn" data-saved="false">♡</button>
+                            <span class="quality-badge">Grade A</span>
+                        </div>
+
+                        <div class="produce-info">
+                            <div class="produce-title-row">
+                                <h3>Fresh Carrot</h3>
+                                <span class="rating">★ 4.6</span>
+                            </div>
+
+                            <p class="farmer-name">👨‍🌾 Vikram Jadhav</p>
+
+                            <div class="produce-meta">
+                                <span>📍 Satara</span>
+                                <span>400 kg</span>
+                            </div>
+
+                            <div class="produce-footer">
+                                <div>
+                                    <small>Price</small>
+                                    <strong>₹28/kg</strong>
+                                </div>
+                                <button class="outline-btn view-details">View Details</button>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <div class="no-results" id="noResults">
+                    <span>🌾</span>
+                    <h3>No produce found</h3>
+                    <p>Try changing your search or filters.</p>
+                </div>
+
+            </section>
+
+
+            <!-- ================= SAVED ================= -->
+            <section class="dashboard-section" id="saved">
+
+                <div class="page-heading">
+                    <span class="section-tag">YOUR SHORTLIST</span>
+                    <h1>Saved Crops</h1>
+                    <p>Keep track of crops you may want to contact farmers about later.</p>
+                </div>
+
+                <div class="saved-list" id="savedList">
+
+                    <div class="saved-empty">
+                        <div>♡</div>
+                        <h3>No saved crops yet</h3>
+                            <p>Keep track of crops you may want to contact farmers about later.</p>                        
+                            <button class="primary-btn" data-section-target="browse">
+                            Browse Crops
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+<!-- =====================================================
+     UPCOMING HARVEST
+===================================================== -->
+<section class="dashboard-section" id="harvest">
+
+    <div class="page-heading">
+        <span class="section-tag">UPCOMING HARVEST</span>
+        <h1>Upcoming Harvest</h1>
+        <p>Plan the purchase based on the future availability.</p>
+    </div>
+
+    <div class="harvest-container">
+
+        <div class="harvest-card">
+
+            <div class="harvest-crop-icon">🍅</div>
+
+            <div class="harvest-main">
+
+                <div class="harvest-top">
+                    <div>
+                        <h3>Fresh Tomato</h3>
+                        <p>Expected harvest from nearby farm</p>
+                    </div>
+
+                    <span class="harvest-status">
+                        Coming Soon
+                    </span>
+                </div>
+
+                <div class="harvest-info">
+
+                    <div class="harvest-info-item">
+                        <span>Farmer</span>
+                        <strong>Rajesh Patil</strong>
+                    </div>
+
+                    <div class="harvest-info-item">
+                        <span>Expected Harvest</span>
+                        <strong>18 Oct 2026</strong>
+                    </div>
+
+                    <div class="harvest-info-item">
+                        <span>Expected Quantity</span>
+                        <strong>2,000 kg</strong>
+                    </div>
+
+                    <div class="harvest-info-item">
+                        <span>Location</span>
+                        <strong>Pune, Maharashtra</strong>
+                    </div>
+
+                </div>
+
+                <div class="harvest-bottom">
+
+                    <p>
+                        Good quality seasonal tomato crop expected
+                        to be available soon.
+                    </p>
+
+                    <div class="harvest-actions">
+                        <button class="outline-btn harvest-save-btn">
+                            ♡ Save Crop
+                        </button>
+
+                        <button class="primary-btn harvest-contact-btn">
+                            Contact Farmer
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="harvest-card">
+
+            <div class="harvest-crop-icon">🧅</div>
+
+            <div class="harvest-main">
+
+                <div class="harvest-top">
+                    <div>
+                        <h3>Onion</h3>
+                        <p>Expected harvest from nearby farm</p>
+                    </div>
+
+                    <span class="harvest-status">
+                        Expected
+                    </span>
+                </div>
+
+                <div class="harvest-info">
+
+                    <div class="harvest-info-item">
+                        <span>Farmer</span>
+                        <strong>Sunil Jadhav</strong>
+                    </div>
+
+                    <div class="harvest-info-item">
+                        <span>Expected Harvest</span>
+                        <strong>25 Oct 2026</strong>
+                    </div>
+
+                    <div class="harvest-info-item">
+                        <span>Expected Quantity</span>
+                        <strong>3,500 kg</strong>
+                    </div>
+
+                    <div class="harvest-info-item">
+                        <span>Location</span>
+                        <strong>Baramati, Maharashtra</strong>
+                    </div>
+
+                </div>
+
+                <div class="harvest-bottom">
+
+                    <p>
+                        Fresh onion crop with expected availability
+                        later this month.
+                    </p>
+
+                    <div class="harvest-actions">
+                        <button class="outline-btn harvest-save-btn">
+                            ♡ Save Crop
+                        </button>
+
+                        <button class="primary-btn harvest-contact-btn">
+                            Contact Farmer
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     TRANSPORT & CONNECTIONS
+===================================================== -->
+<section class="dashboard-section" id="transport">
+
+    <div class="page-heading">
+        <span class="section-tag">TRANSPORT & CONNECTIONS</span>
+        <h1>Transport & Connections</h1>
+        <p>Connect with the farmers and arrange the pickup.</p>
+    </div>
+
+    <div class="transport-container">
+
+        <!-- CONNECTION CARD 1 -->
+        <div class="transport-card">
+
+            <div class="transport-header">
+
+                <div class="transport-farmer">
+
+                    <div class="transport-avatar">
+                        RP
+                    </div>
+
+                    <div>
+                        <h3>Rajesh Patil</h3>
+                        <p>📍 Pune, Maharashtra</p>
+                    </div>
+
+                </div>
+
+                <span class="transport-status">
+                    Available
+                </span>
+
+            </div>
+
+
+            <div class="transport-crop">
+
+                <div class="transport-crop-icon">
+                    🍅
+                </div>
+
+                <div class="transport-crop-details">
+                    <span>Available Crop</span>
+                    <strong>Fresh Tomato</strong>
+                    <small>
+                        Good quality seasonal tomato crop
+                    </small>
+                </div>
+
+                <div class="transport-quantity">
+                    <span>Available Quantity</span>
+                    <strong>2,000 kg</strong>
+                </div>
+
+            </div>
+
+
+            <div class="transport-info">
+
+                <div class="transport-info-item">
+                    <span>Farm Location</span>
+                    <strong>Pune, Maharashtra</strong>
+                </div>
+
+                <div class="transport-info-item">
+                    <span>Contact</span>
+                    <strong>+91 XXXXX XXXXX</strong>
+                </div>
+
+                <div class="transport-info-item">
+                    <span>Pickup</span>
+                    <strong>Farmer-arranged</strong>
+                </div>
+
+            </div>
+
+
+            <div class="transport-footer">
+
+                <p>
+                    Contact the farmer directly to discuss
+                    pickup timing and transportation.
+                </p>
+
+                <div class="transport-actions">
+
+                    <button class="outline-btn transport-save-btn">
+                        ♡ Save Connection
+                    </button>
+
+                    <button class="primary-btn transport-contact-btn">
+                        Contact Farmer
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONNECTION CARD 2 -->
+        <div class="transport-card">
+
+            <div class="transport-header">
+
+                <div class="transport-farmer">
+
+                    <div class="transport-avatar">
+                        SJ
+                    </div>
+
+                    <div>
+                        <h3>Sunil Jadhav</h3>
+                        <p>📍 Baramati, Maharashtra</p>
+                    </div>
+
+                </div>
+
+                <span class="transport-status">
+                    Available
+                </span>
+
+            </div>
+
+
+            <div class="transport-crop">
+
+                <div class="transport-crop-icon">
+                    🧅
+                </div>
+
+                <div class="transport-crop-details">
+                    <span>Available Crop</span>
+                    <strong>Fresh Onion</strong>
+                    <small>
+                        Freshly harvested quality onion crop
+                    </small>
+                </div>
+
+                <div class="transport-quantity">
+                    <span>Available Quantity</span>
+                    <strong>3,500 kg</strong>
+                </div>
+
+            </div>
+
+
+            <div class="transport-info">
+
+                <div class="transport-info-item">
+                    <span>Farm Location</span>
+                    <strong>Baramati, Maharashtra</strong>
+                </div>
+
+                <div class="transport-info-item">
+                    <span>Contact</span>
+                    <strong>+91 XXXXX XXXXX</strong>
+                </div>
+
+                <div class="transport-info-item">
+                    <span>Pickup</span>
+                    <strong>Farmer-arranged</strong>
+                </div>
+
+            </div>
+
+
+            <div class="transport-footer">
+
+                <p>
+                    Connect with the farmer and arrange a
+                    suitable pickup for the crop.
+                </p>
+
+                <div class="transport-actions">
+
+                    <button class="outline-btn transport-save-btn">
+                        ♡ Save Connection
+                    </button>
+
+                    <button class="primary-btn transport-contact-btn">
+                        Contact Farmer
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+            <!-- ================= PROFILE ================= -->
+            <section class="dashboard-section" id="profile">
+
+                <div class="page-heading">
+                    <span class="section-tag">ACCOUNT</span>
+                    <h1>My Profile</h1>
+                    <p>Manage your buyer information and preferences.</p>
+                </div>
+
+                <div class="profile-card">
+
+                    <div class="profile-header">
+
+                        <div class="large-avatar">
+                            AK
+                        </div>
+
+                        <div>
+                            <h2>Arjun Kumar</h2>
+                            <p>Buyer · Pune, Maharashtra</p>
+                        </div>
+
+                        <button class="outline-btn">
+                            Edit Profile
+                        </button>
+
+                    </div>
+
+
+                    <div class="profile-details">
+
+                        <div class="profile-field">
+                            <span>Full Name</span>
+                            <strong>Arjun Kumar</strong>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Phone</span>
+                            <strong>+91 XXXXX XXXXX</strong>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Location</span>
+                            <strong>Pune, Maharashtra</strong>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Buyer Type</span>
+                            <strong>Wholesale Buyer</strong>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Preferred Crops</span>
+                            <strong>Tomato, Potato, Onion</strong>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Preferred Area</span>
+                            <strong>Pune & Nearby</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+<!-- ================= NOTIFICATION PANEL ================= -->
+<div class="notification-panel" id="notificationPanel">
+
+    <div class="notification-header">
+        <div>
+            <span class="section-tag">UPDATES</span>
+            <h3>Notifications</h3>
+        </div>
+
+        <button id="closeNotifications">×</button>
+    </div>
+
+    <div class="notification-item">
+        <span>🌾</span>
+        <div>
+            <strong>New tomato listing</strong>
+            <p>500 kg Grade-A tomato available in Pune.</p>
+            <small>10 min ago</small>
+        </div>
+    </div>
+
+    <div class="notification-item">
+        <span>🌱</span>
+        <div>
+            <strong>Upcoming harvest</strong>
+            <p>Onion harvest from Baramati is expected on 25 Oct 2026.</p>
+            <small>1 hour ago</small>
+        </div>
+    </div>
+
+    <div class="notification-item">
+        <span>👨‍🌾</span>
+        <div>
+            <strong>Farmer connection</strong>
+            <p>A nearby farmer is available for direct contact.</p>
+            <small>2 hours ago</small>
+        </div>
+    </div>
+
+</div>
+
+
+    <!-- ================= DETAILS MODAL ================= -->
+    <div class="modal-overlay" id="detailsModal">
+
+        <div class="details-modal">
+
+            <button class="modal-close" id="modalClose">×</button>
+
+            <div class="modal-produce-icon" id="modalProduceIcon">
+                🍅
+            </div>
+
+            <span class="section-tag">PRODUCE DETAILS</span>
+
+            <h2 id="modalTitle">Fresh Tomato</h2>
+
+            <p id="modalFarmer">👨‍🌾 Rajesh Patil</p>
+
+            <div class="modal-details-grid">
+
+<div class="modal-details-grid">
+
+    <div>
+        <span>Quality</span>
+        <strong>Grade A</strong>
+    </div>
+
+    <div>
+        <span>Available Quantity</span>
+        <strong>500 kg</strong>
+    </div>
+
+    <div>
+        <span>Price</span>
+        <strong>₹24/kg</strong>
+    </div>
+
+    <div>
+        <span>Farm Location</span>
+        <strong>Pune</strong>
+    </div>
+
+</div>
+
+                <div class="modal-farmer-info">
+
+                    <div class="modal-farmer-item">
+                        <span>Farmer</span>
+                        <strong>Rajesh Patil</strong>
+                    </div>
+
+                    <div class="modal-farmer-item">
+                        <span>Contact</span>
+                        <strong>+91 XXXXX XXXXX</strong>
+                    </div>
+
+                </div>
+            </div>
+
+        <button class="primary-btn modal-contact-btn" id="contactFarmerBtn">
+            📞 Contact Farmer
+        </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+    <div class="toast" id="toast">
+        <span>✓</span>
+        <p id="toastMessage">Action completed.</p>
+    </div>
+
+
+    <script src="../js/translation.js"></script>
+<script src="js/buyer.js"></script>
+
+    <!-- Buyer readability enhancement: +3px and bold for readable UI text.
+         Applied after the original stylesheet so existing layout/classes remain intact. -->
+    <script>
+    (function () {
+        'use strict';
+        function boostBuyerText(root) {
+            if (!root || !root.querySelectorAll) return;
+            const nodes = Array.from(root.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,a,button,label,li,small,strong,em,td,th,dt,dd,input,textarea,select,option'))
+                .filter(function (el) {
+                    return el.textContent && el.textContent.trim() && !el.dataset.buyerFontBoosted;
+                })
+                .reverse();
+
+            nodes.forEach(function (el) {
+                const size = parseFloat(window.getComputedStyle(el).fontSize);
+                if (Number.isFinite(size)) el.style.fontSize = (size + 3) + 'px';
+                el.style.fontWeight = '700';
+                el.dataset.buyerFontBoosted = 'true';
+            });
+        }
+
+        function updateBuyerBranding(language) {
+            const topbar = document.getElementById('buyerTopbar');
+            if (!topbar) return;
+            const labels = {
+                en: { brand: 'Krishi-Mitra', tagline: 'YOUR SMART FARMING COMPANION' },
+                hi: { brand: 'कृषि-मित्र', tagline: 'आपका स्मार्ट खेती साथी' },
+                mr: { brand: 'कृषी-मित्र', tagline: 'तुमचा स्मार्ट शेती साथीदार' }
+            };
+            const value = labels[language] || labels.en;
+            topbar.setAttribute('data-brand', value.brand);
+            topbar.setAttribute('data-tagline', value.tagline);
+        }
+
+        function initBuyerReadability() {
+            if (window.KrishiTranslation) {
+                updateBuyerBranding(window.KrishiTranslation.getLanguage());
+                document.addEventListener('krishi:language-changed', function (event) {
+                    updateBuyerBranding(event.detail && event.detail.language || 'en');
+                });
+            }
+            boostBuyerText(document.body);
+            const observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    mutation.addedNodes.forEach(function (node) {
+                        if (node.nodeType === 1) boostBuyerText(node);
+                    });
+                });
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initBuyerReadability);
+        } else {
+            initBuyerReadability();
+        }
+    })();
+    </script>
+
+</body>
+</html>

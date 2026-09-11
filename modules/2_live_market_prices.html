@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Market Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        #module-map { z-index: 0; }
+        .farm-icon { background: white; border: 2px solid #064e3b; border-radius: 50%; width: 14px !important; height: 14px !important; margin-left: -7px; margin-top: -7px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+<!-- Full Width Header matching Teammate Dashboard -->
+<header class="bg-[#064e3b] shadow-md sticky top-0 z-10 text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3 w-full md:w-auto">
+            <div class="bg-white p-2 rounded-xl text-2xl flex items-center justify-center">
+                <svg class="w-6 h-6 text-[#064e3b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+            </div>
+            <div>
+                <h1 class="text-xl font-extrabold text-white">Live Market Intelligence</h1>
+                <p class="text-[10px] font-semibold text-emerald-200 uppercase tracking-wider">Dynamic APMC Rates & Routing</p>
+            </div>
+        </div>
+        <div class="flex flex-wrap items-center bg-black/20 rounded-xl p-2 px-4 gap-4 shadow-sm border border-white/10 w-full md:w-auto justify-center">
+            <div class="flex items-center gap-2 text-xs font-bold whitespace-nowrap">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <span id="location-text">Detecting Precise Location...</span>
+            </div>
+            <div class="hidden sm:block w-px h-6 bg-white/20"></div>
+            <div class="flex items-center gap-2 text-xs font-bold whitespace-nowrap">
+                <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                <span id="weather-text">Loading Weather...</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="flex-1 w-full max-w-7xl mx-auto px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+    
+    <!-- Left Panel -->
+    <div class="w-full lg:w-5/12 flex flex-col max-h-[720px]">
+        <!-- Profit & Deduction Controls Card -->
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 mb-4 space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Select Crop</label>
+                    <select id="crop-select" onchange="renderMarkets()" class="bg-slate-50 border border-slate-300 font-bold rounded-xl px-3 py-2.5 outline-none w-full focus:border-[#064e3b] text-sm">
+                        <option value="Tomato">Tomato</option>
+                        <option value="Grapes">Grapes</option>
+                        <option value="Onion">Onion</option>
+                        <option value="Sugarcane">Sugarcane</option>
+                        <option value="Jowar">Jowar</option>
+                        <option value="Rice (Paddy)">Rice (Paddy)</option>
+                        <option value="Soybean">Soybean</option>
+                        <option value="Wheat">Wheat</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Quantity (Quintals)</label>
+                    <input type="number" id="qty-input" value="10" min="1" oninput="renderMarkets()" class="bg-slate-50 border border-slate-300 font-bold rounded-xl px-3 py-2.5 outline-none w-full focus:border-[#064e3b] text-sm">
+                </div>
+            </div>
+
+            <!-- Logistics & Deductions Settings -->
+            <div class="pt-3 border-t border-slate-100 space-y-2 text-xs">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div class="flex items-center gap-2 text-slate-700 font-bold">
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
+                        <span id="transport-rate-label">Compulsory Transport: <b class="text-rose-600">₹50 / Qtl per 7 km</b> (Direct Truck)</span>
+                    </div>
+                    <label class="inline-flex items-center gap-2 cursor-pointer select-none bg-emerald-50 hover:bg-emerald-100 px-2.5 py-1.5 rounded-lg border border-emerald-200 transition-colors">
+                        <input type="checkbox" id="shared-transport-toggle" onchange="renderMarkets()" class="w-4 h-4 text-[#064e3b] rounded focus:ring-0">
+                        <span class="font-bold text-[#064e3b]">Enable Shared Pooling (50% Off: ₹25/Qtl/7km)</span>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-between pt-1 border-t border-slate-100">
+                    <span class="text-slate-500 font-medium">Post-Harvest Storage:</span>
+                    <label class="inline-flex items-center gap-2 cursor-pointer select-none bg-slate-50 hover:bg-slate-100 px-2.5 py-1.5 rounded-lg border border-slate-200 transition-colors">
+                        <input type="checkbox" id="storage-toggle" onchange="renderMarkets()" class="w-4 h-4 text-[#064e3b] rounded focus:ring-0">
+                        <span class="font-bold text-slate-700">Deduct Cold Storage Fee</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div id="markets-grid" class="flex-1 overflow-y-auto space-y-4 pr-2 km-scroll"></div>
+    </div>
+    
+    <!-- Right Panel: Map -->
+    <div class="w-full lg:w-7/12 bg-slate-100 rounded-3xl border border-slate-200 overflow-hidden relative min-h-[400px]">
+        <div id="module-map" class="w-full h-full absolute inset-0"></div>
+    </div>
+    
+    <script>
+        let markets = [];
+
+        // Explicit localization for APMC names and addresses returned dynamically
+        // by the market API. Proper/location names are intentionally handled here
+        // because automatic translators may leave them unchanged.
+        const marketLocalizations = {
+            "Chakan APMC Yard": {
+                hi: "चाकण एपीएमसी यार्ड", mr: "चाकण एपीएमसी यार्ड"
+            },
+            "Khed Taluka Hub": {
+                hi: "खेड तालुका हब", mr: "खेड तालुका हब"
+            },
+            "Chakan, Maharashtra": {
+                hi: "चाकण, महाराष्ट्र", mr: "चाकण, महाराष्ट्र"
+            },
+            "Compulsory Transport": {
+                hi: "अनिवार्य परिवहन", mr: "अनिवार्य वाहतूक"
+            },
+            "Chakan-Talegaon Road, Near ST Stand, Chakan, Taluka Khed, Pune": {
+                hi: "चाकण-तळेगाव रोड, एसटी स्टैंड के पास, चाकण, तालुका खेड, पुणे",
+                mr: "चाकण-तळेगाव रोड, एसटी स्टँडजवळ, चाकण, तालुका खेड, पुणे"
+            },
+            "Talegaon Dabhade APMC Sub-Yard": {
+                hi: "तळेगाव दाभाडे एपीएमसी उप-बाज़ार यार्ड",
+                mr: "तळेगाव दाभाडे एपीएमसी उप-बाजार यार्ड"
+            },
+            "Station Road, Near Flyover, Talegaon Dabhade, Maval, Pune": {
+                hi: "स्टेशन रोड, फ्लाईओवर के पास, तळेगाव दाभाडे, मावल, पुणे",
+                mr: "स्टेशन रोड, फ्लायओव्हरजवळ, तळेगाव दाभाडे, मावळ, पुणे"
+            },
+            "Junnar Narayangaon APMC Hub": {
+                hi: "जुन्नर, नारायणगाव एपीएमसी हब",
+                mr: "जुन्नर, नारायणगाव एपीएमसी हब"
+            },
+            "NH 60 Pune-Nashik Highway, Narayangaon, Taluka Junnar, Pune": {
+                hi: "एनएच 60 पुणे-नाशिक हाईवे, नारायणगाव, तालुका जुन्नर, पुणे",
+                mr: "एनएच 60 पुणे-नाशिक महामार्ग, नारायणगाव, तालुका जुन्नर, पुणे"
+            },
+            "Pimpri APMC Krishi Mandi (PCMC)": {
+                hi: "पिंपरी एपीएमसी कृषि मंडी (पीसीएमसी)",
+                mr: "पिंपरी एपीएमसी कृषी मंडई (पीसीएमसी)"
+            },
+            "Near Railway Station, Dr. Ambedkar Chowk, Pimpri Colony, Pune": {
+                hi: "रेलवे स्टेशन के पास, डॉ. आंबेडकर चौक, पिंपरी कॉलोनी, पुणे",
+                mr: "रेल्वे स्थानकाजवळ, डॉ. आंबेडकर चौक, पिंपरी कॉलनी, पुणे"
+            },
+            "Khadki Cantonment Wholesale Mandi": {
+                hi: "खड़की कैंटोनमेंट थोक मंडी",
+                mr: "खडकी कॅन्टोन्मेंट घाऊक मंडई"
+            },
+            "Old Mumbai-Pune Highway, Bazaar Area, Khadki, Pune": {
+                hi: "पुराना मुंबई-पुणे हाईवे, बाज़ार क्षेत्र, खड़की, पुणे",
+                mr: "जुना मुंबई-पुणे महामार्ग, बाजार परिसर, खडकी, पुणे"
+            },
+            "Hadapsar APMC Sub-Market Yard": {
+                hi: "हडपसर एपीएमसी उप-बाज़ार यार्ड",
+                mr: "हडपसर एपीएमसी उप-बाजार यार्ड"
+            },
+            "Pune-Solapur National Highway, Gadital, Hadapsar, Pune": {
+                hi: "पुणे-सोलापुर राष्ट्रीय राजमार्ग, गाडीतळ, हडपसर, पुणे",
+                mr: "पुणे-सोलापूर राष्ट्रीय महामार्ग, गाडीतळ, हडपसर, पुणे"
+            },
+            "Shree Chhatrapati Shivaji Market Yard (Gultekdi APMC)": {
+                hi: "श्री छत्रपति शिवाजी बाज़ार यार्ड (गुलटेकड़ी एपीएमसी)",
+                mr: "श्री छत्रपती शिवाजी बाजार यार्ड (गुलटेकडी एपीएमसी)"
+            },
+            "Gate No. 4 and 5": {
+                hi: "गुलटेकड़ी एपीएमसी गेट नंबर 4 और 5",
+                mr: "गुलटेकडी एपीएमसी गेट क्रमांक ४ आणि ५"
+            },
+            "APMC Yard, Gultekdi, Pune, Maharashtra": {
+                hi: "एपीएमसी यार्ड, गुलटेकड़ी, पुणे, महाराष्ट्र",
+                mr: "एपीएमसी यार्ड, गुलटेकडी, पुणे, महाराष्ट्र"
+            }
+        };
+
+        function currentModuleLanguage() {
+            return window.KrishiTranslation && window.KrishiTranslation.getLanguage
+                ? window.KrishiTranslation.getLanguage() : (localStorage.getItem('krishiMitraLanguage') || 'en');
+        }
+
+        function localizeMarketValue(value) {
+            if (!value) return value;
+            const lang = currentModuleLanguage();
+            if (lang === 'en') return value;
+            const exact = marketLocalizations[String(value).trim()];
+            return exact && exact[lang] ? exact[lang] : value;
+        }
+        
+        async function initModule() {
+            try {
+                let r = await fetch(`http://localhost:5001/api/markets?lat=${userLat}&lng=${userLng}`);
+                let d = await r.json();
+                markets = d.mandis;
+                renderMarkets();
+                initMap();
+            } catch(e) {}
+        }
+
+        function getStorageMultiplier(crop) {
+            if (crop === 'Grapes') return 1.4;
+            if (crop === 'Sugarcane') return 0.8;
+            if (crop === 'Jowar' || crop === 'Rice (Paddy)') return 0.4;
+            return 1.0;
+        }
+        
+        function renderMarkets() {
+            let crop = document.getElementById('crop-select').value;
+            let qty = Math.max(1, parseFloat(document.getElementById('qty-input').value) || 10);
+            let useSharedTransport = document.getElementById('shared-transport-toggle').checked;
+            let useStorage = document.getElementById('storage-toggle').checked;
+            let grid = document.getElementById('markets-grid');
+            grid.innerHTML = '';
+
+            // 1. Transport Rate: Exactly ₹50 / Qtl / 7 km direct. If shared pooling opted: ₹25 / Qtl / 7 km.
+            let ratePer7Km = useSharedTransport ? 25 : 50;
+            
+            let rateLabel = document.getElementById('transport-rate-label');
+            if (rateLabel) {
+                rateLabel.innerHTML = useSharedTransport 
+                    ? `Compulsory Transport: <b class="text-emerald-700">₹25 / Qtl per 7 km</b> (Shared Pool Active)`
+                    : `Compulsory Transport: <b class="text-rose-600">₹50 / Qtl per 7 km</b> (Direct Truck)`;
+            }
+
+            // 2. Cold Storage Fee (only if chosen)
+            let storageMultiplier = getStorageMultiplier(crop);
+            let storageRatePerQtl = useStorage ? (50 * storageMultiplier) : 0;
+            let totalStorageCost = storageRatePerQtl * qty;
+
+            // Compute net financial balance sheet for each market
+            let calculated = markets.map(m => {
+                let pricePerQtl = (m.prices && m.prices[crop]) ? m.prices[crop] : 0;
+                let grossRevenue = pricePerQtl * qty;
+                
+                // Compulsory Transport: (Distance / 7 km) * Rate (₹50 or ₹25) * Quantity
+                let transportCost = Math.round((m.distance / 7.0) * ratePer7Km * qty);
+                let totalDeductions = transportCost + Math.round(totalStorageCost);
+                let netTakeHome = Math.round(grossRevenue - totalDeductions);
+                let netPerQtl = Math.round(netTakeHome / qty);
+
+                return {
+                    ...m,
+                    pricePerQtl,
+                    grossRevenue,
+                    transportCost,
+                    ratePer7Km,
+                    storageCost: Math.round(totalStorageCost),
+                    totalDeductions,
+                    netTakeHome,
+                    netPerQtl
+                };
+            });
+
+            // Sort by HIGHEST Net Take-Home Profit to recommend the best valuable market
+            calculated.sort((a, b) => b.netTakeHome - a.netTakeHome);
+
+            calculated.forEach((m, index) => {
+                let isBest = index === 0;
+                let isLoss = m.netTakeHome < 0;
+                grid.innerHTML += `
+                <div class="p-5 rounded-2xl border ${isBest ? 'border-[#064e3b] bg-emerald-50/60 shadow-md ring-2 ring-[#064e3b]/20' : (isLoss ? 'border-red-200 bg-red-50/30' : 'border-slate-200 bg-white shadow-sm')} hover:border-[#064e3b] transition-all cursor-pointer relative overflow-hidden" onclick="showRoute(${m.lat}, ${m.lng})">
+                    ${isBest ? `
+                    <div class="absolute top-0 right-0 bg-[#064e3b] text-white text-[10px] font-black tracking-wider px-3 py-1 rounded-bl-xl shadow-sm flex items-center gap-1">
+                        <svg class="w-3 h-3 text-amber-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        HIGHEST TAKE-HOME PROFIT
+                    </div>` : ''}
+
+                    <div class="flex justify-between items-start mb-2 pr-4">
+                        <div>
+                            <h3 class="font-extrabold text-slate-900 text-lg leading-snug">${localizeMarketValue(m.name)}</h3>
+                            <div class="text-xs font-semibold text-slate-500 mt-1 flex items-start gap-1">
+                                <svg class="w-3.5 h-3.5 text-slate-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                                <span>${localizeMarketValue(m.address)}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financial Balance Sheet -->
+                    <div class="mt-3 bg-white/90 rounded-xl p-3 border border-slate-200/80 space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold text-slate-600">
+                            <span>APMC Gross Rate:</span>
+                            <span class="text-slate-900">₹${m.pricePerQtl.toLocaleString('en-IN')} / Qtl (Gross: ₹${m.grossRevenue.toLocaleString('en-IN')})</span>
+                        </div>
+                        
+                        <div class="flex justify-between text-xs font-semibold text-rose-600 pt-1 border-t border-slate-100">
+                            <span>Compulsory Transport (${m.distance} km @ ₹${m.ratePer7Km}/Qtl per 7 km):</span>
+                            <span>- ₹${m.transportCost.toLocaleString('en-IN')}</span>
+                        </div>
+
+                        ${useStorage ? `
+                        <div class="flex justify-between text-xs font-semibold text-sky-600">
+                            <span>Cold Storage Fee (${crop} @ ₹${storageRatePerQtl}/Qtl):</span>
+                            <span>- ₹${m.storageCost.toLocaleString('en-IN')}</span>
+                        </div>` : ''}
+
+                        <div class="flex justify-between items-center pt-2 border-t border-slate-200">
+                            <div>
+                                <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Total Take-Home Profit</span>
+                                <span class="text-xs font-bold ${isLoss ? 'text-rose-600' : 'text-emerald-700'}">₹${m.netPerQtl.toLocaleString('en-IN')} net / Qtl</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-2xl font-black ${isLoss ? 'text-rose-600' : 'text-[#064e3b]'}">₹${m.netTakeHome.toLocaleString('en-IN')}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 text-xs font-semibold text-slate-500 flex items-center justify-between">
+                        <span class="flex items-center gap-1 text-[#064e3b] font-bold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            ${m.distance} km from farm
+                        </span>
+                        <span class="text-slate-400">Click to view route on map ➔</span>
+                    </div>
+                </div>`;
+            });
+        }
+        
+        function initMap() {
+            map = L.map('module-map').setView([userLat, userLng], 10);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+            
+            var farmIcon = L.divIcon({className: 'farm-icon'});
+            L.marker([userLat, userLng], {icon: farmIcon}).addTo(map).bindPopup("<b>My Farm Location</b>").openPopup();
+            
+            markets.forEach(m => {
+                L.marker([m.lat, m.lng]).addTo(map).bindPopup(`<b>${localizeMarketValue(m.name)}</b><br>${localizeMarketValue(m.address)}`);
+            });
+        }
+        
+        document.addEventListener('krishi:language-changed', function () {
+            if (markets.length) {
+                renderMarkets();
+                if (map) {
+                    map.eachLayer(function (layer) {
+                        if (layer.getPopup && layer.getPopup()) {
+                            const popup = layer.getPopup();
+                            const html = popup.getContent();
+                            if (typeof html === 'string') {
+                                // Refresh marker popups using localized market data.
+                                markets.forEach(function (m) {
+                                    const localizedName = localizeMarketValue(m.name);
+                                    if (html.includes(String(m.name))) {
+                                        layer.bindPopup('<b>' + localizedName + '</b><br>' + localizeMarketValue(m.address));
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        let routeLine;
+        function showRoute(dLat, dLng) {
+            if(routeLine) map.removeLayer(routeLine);
+            routeLine = L.polyline([[userLat, userLng], [dLat, dLng]], {color: '#064e3b', weight: 4, dashArray: '8, 8'}).addTo(map);
+            map.fitBounds(routeLine.getBounds(), {padding: [50, 50]});
+        }
+    </script>
+    <style>.km-scroll::-webkit-scrollbar { width: 6px; } .km-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }</style>
+    
+</main>
+
+<script>
+    let userLat = 18.7516;
+    let userLng = 73.8567;
+    let map = null;
+
+    async function initGlobal() {
+        let cachedLat = localStorage.getItem('krishi_lat');
+        let cachedLng = localStorage.getItem('krishi_lng');
+        
+        if (cachedLat && cachedLng) {
+            userLat = parseFloat(cachedLat);
+            userLng = parseFloat(cachedLng);
+            await fetchLocationAndWeather();
+            if(typeof initModule === 'function') initModule();
+        } else if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                async (pos) => {
+                    userLat = pos.coords.latitude;
+                    userLng = pos.coords.longitude;
+                    localStorage.setItem('krishi_lat', userLat);
+                    localStorage.setItem('krishi_lng', userLng);
+                    await fetchLocationAndWeather();
+                    if(typeof initModule === 'function') initModule();
+                },
+                async () => {
+                    await fetchLocationAndWeather();
+                    if(typeof initModule === 'function') initModule();
+                }
+            );
+        } else {
+            await fetchLocationAndWeather();
+            if(typeof initModule === 'function') initModule();
+        }
+    }
+
+    async function fetchLocationAndWeather() {
+        try {
+            let locRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${userLat}&lon=${userLng}`);
+            let locData = await locRes.json();
+            let preciseName = "";
+            if (locData.address) {
+                preciseName = locData.address.village || locData.address.town || locData.address.city_district || locData.address.county || "";
+                if (preciseName) preciseName += ", ";
+                preciseName += locData.address.state || "";
+            }
+            document.getElementById('location-text').innerText = preciseName || "Unknown Location";
+        } catch(e) { document.getElementById('location-text').innerText = "Offline Mode"; }
+        
+        try {
+            let r = await fetch(`http://localhost:5001/api/weather?lat=${userLat}&lng=${userLng}`);
+            let d = await r.json();
+            if(d.temperature) {
+                document.getElementById('weather-text').innerText = `${d.temperature}°C, ${d.humidity}% Hum`;
+            }
+        } catch(e) { document.getElementById('weather-text').innerText = "Weather Offline"; }
+    }
+    
+    window.onload = initGlobal;
+</script>
+    <script src="../frontend(gov)/js/translation.js"></script>
+</body>
+</html>

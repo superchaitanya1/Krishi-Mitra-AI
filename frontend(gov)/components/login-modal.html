@@ -1,0 +1,500 @@
+<!-- =====================================================
+     KRISHI-MITRA
+     LOGIN / SIGN-UP MODAL
+     Mobile Number Authentication
+     ===================================================== -->
+
+<div
+    class="modal auth-modal"
+    id="loginModal"
+    aria-hidden="true">
+
+    <div
+        class="modal-overlay"
+        data-close-login>
+    </div>
+
+
+    <div
+        class="modal-container auth-modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="authModalTitle">
+
+
+        <!-- =================================================
+             CLOSE BUTTON
+             ================================================= -->
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-login
+            aria-label="Close">
+
+            ×
+
+        </button>
+
+
+        <!-- =================================================
+             AUTH HEADER
+             ================================================= -->
+
+        <div class="auth-header">
+
+            <div class="auth-logo">
+                🌱
+            </div>
+
+            <h2 id="authModalTitle">
+                Welcome to Krishi-Mitra
+            </h2>
+
+            <p id="authModalSubtitle">
+                Your smart farming companion
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             STEP 1 — MOBILE NUMBER
+             ================================================= -->
+
+        <div
+            class="auth-step active"
+            data-auth-step="mobile">
+
+
+            <div class="auth-step-heading">
+
+                <h3>
+                    Get Started
+                </h3>
+
+                <p>
+                    Enter your mobile number to continue.
+                </p>
+
+            </div>
+
+
+            <form
+                id="mobileAuthForm"
+                data-mobile-auth-form>
+
+
+                <!-- Mobile Number -->
+
+                <div class="form-group">
+
+                    <label
+                        for="authMobileNumber">
+
+                        Mobile Number
+
+                    </label>
+
+
+                    <div class="mobile-input-wrapper">
+
+                        <span class="country-code">
+                            +91
+                        </span>
+
+                        <input
+                            type="tel"
+                            id="authMobileNumber"
+                            name="mobile"
+                            class="form-input mobile-input"
+                            placeholder="Enter 10-digit mobile number"
+                            maxlength="10"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                            required>
+
+                    </div>
+
+
+                    <small
+                        class="input-help"
+                        id="mobileInputHelp">
+
+                        We'll use your mobile number
+                        to securely sign you in.
+
+                    </small>
+
+                </div>
+
+
+                <!-- Continue -->
+
+                <button
+                    type="submit"
+                    class="auth-primary-button"
+                    id="mobileContinueButton">
+
+                    <span>
+                        Continue
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <!-- Guest Access -->
+
+                <div class="guest-access">
+
+                    <span>
+                        Want to explore first?
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="guest-button"
+                        data-continue-as-guest>
+
+                        Continue without signing in
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- =================================================
+             STEP 2 — OTP
+             ================================================= -->
+
+        <div
+            class="auth-step"
+            data-auth-step="otp">
+
+
+            <div class="auth-step-heading">
+
+                <div class="otp-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Verify Your Number
+                </h3>
+
+                <p>
+                    Enter the OTP sent to
+                </p>
+
+                <strong
+                    id="otpMobileDisplay">
+                    +91 XXXXX XXXXX
+                </strong>
+
+            </div>
+
+
+            <form
+                id="otpForm"
+                data-otp-form>
+
+
+                <!-- OTP -->
+
+                <div
+                    class="otp-input-container"
+                    data-otp-container>
+
+                    <input
+                        type="text"
+                        class="otp-input"
+                        maxlength="1"
+                        inputmode="numeric"
+                        data-otp-input
+                        aria-label="OTP digit 1">
+
+                    <input
+                        type="text"
+                        class="otp-input"
+                        maxlength="1"
+                        inputmode="numeric"
+                        data-otp-input
+                        aria-label="OTP digit 2">
+
+                    <input
+                        type="text"
+                        class="otp-input"
+                        maxlength="1"
+                        inputmode="numeric"
+                        data-otp-input
+                        aria-label="OTP digit 3">
+
+                    <input
+                        type="text"
+                        class="otp-input"
+                        maxlength="1"
+                        inputmode="numeric"
+                        data-otp-input
+                        aria-label="OTP digit 4">
+
+                    <input
+                        type="text"
+                        class="otp-input"
+                        maxlength="1"
+                        inputmode="numeric"
+                        data-otp-input
+                        aria-label="OTP digit 5">
+
+                    <input
+                        type="text"
+                        class="otp-input"
+                        maxlength="1"
+                        inputmode="numeric"
+                        data-otp-input
+                        aria-label="OTP digit 6">
+
+                </div>
+
+
+                <!-- OTP Error -->
+
+                <p
+                    class="auth-error"
+                    id="otpError"
+                    role="alert">
+                </p>
+
+
+                <!-- Verify -->
+
+                <button
+                    type="submit"
+                    class="auth-primary-button"
+                    id="verifyOtpButton">
+
+                    <span>
+                        Verify & Continue
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <!-- Resend -->
+
+                <div class="otp-resend">
+
+                    <span>
+                        Didn't receive the OTP?
+                    </span>
+
+                    <button
+                        type="button"
+                        id="resendOtpButton"
+                        data-resend-otp
+                        disabled>
+
+                        Resend OTP
+
+                    </button>
+
+                    <span
+                        class="otp-timer"
+                        id="otpTimer">
+
+                        30s
+
+                    </span>
+
+                </div>
+
+
+                <!-- Change Number -->
+
+                <button
+                    type="button"
+                    class="change-number-button"
+                    data-change-mobile>
+
+                    ← Change mobile number
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- =================================================
+             STEP 3 — NEW USER / PROFILE CREATION
+             ================================================= -->
+
+        <div
+            class="auth-step"
+            data-auth-step="profile-required">
+
+
+            <div class="profile-required-icon">
+                👨‍🌾
+            </div>
+
+
+            <div class="auth-step-heading">
+
+                <h3>
+                    Create Your Farmer Profile
+                </h3>
+
+                <p>
+                    You're almost ready!
+                    Let's set up your farmer profile
+                    to give you personalized farming advice.
+                </p>
+
+            </div>
+
+
+            <div class="profile-required-info">
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        🌿
+                    </span>
+
+                    <span>
+                        Personalized crop health
+                        information
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        ☁️
+                    </span>
+
+                    <span>
+                        Location-based weather
+                        updates
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        📈
+                    </span>
+
+                    <span>
+                        Relevant market prices
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-icon">
+                        💧
+                    </span>
+
+                    <span>
+                        Personalized irrigation
+                        advice
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="auth-primary-button"
+                data-create-profile>
+
+                <span>
+                    Create My Profile
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="skip-profile-button"
+                data-skip-profile>
+
+                Skip for now
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             LOGGED-IN MESSAGE
+             ================================================= -->
+
+        <div
+            class="auth-success"
+            data-auth-success
+            aria-hidden="true">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h3>
+                Welcome to Krishi-Mitra!
+            </h3>
+
+            <p>
+                You're successfully signed in.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             SECURITY NOTE
+             ================================================= -->
+
+        <div class="auth-security-note">
+
+            <span class="security-icon">
+                🔒
+            </span>
+
+            <span>
+                Your information is kept secure
+                and used to personalize your
+                Krishi-Mitra experience.
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
